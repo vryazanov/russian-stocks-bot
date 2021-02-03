@@ -28,7 +28,7 @@ if __name__ == '__main__':
         bot.settings.STOCKS_BASE_URL, codes)
     stocks = stock_service.fetch()
 
-    voting_service = bot.services.VotingManager(voting_storage)
+    voting_service = bot.services.VotingManager(voting_storage, user_storage)
 
     LOGGER.info('Initializing handlers...')
 
@@ -53,6 +53,7 @@ if __name__ == '__main__':
             bot.actions.Users(user_storage),
             bot.actions.Winners(user_storage),
             bot.actions.StartVoting(user_service, voting_service),
+            bot.actions.StopVoting(voting_service)
         ],        
     )
     admin_group.as_bot_handler(my_bot)

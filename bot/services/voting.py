@@ -10,9 +10,12 @@ from bot.storage import VotingStorage, UserStorage
 class VotingManager:
     """Voting manager."""
 
-    def __init__(self, voting_storage: VotingStorage):
+    def __init__(
+        self, voting_storage: VotingStorage, user_storage: UserStorage,
+    ):
         """Primatry constructor."""
         self._voting_storage = voting_storage
+        self._user_storage = user_storage
 
     def current(self) -> typing.Optional[Voting]:
         """Check if any voting available."""
@@ -34,3 +37,24 @@ class VotingManager:
                 finished_at=None,
             ),
         )
+
+    def stop(self) -> bool:
+        """Stop active voting."""
+        voting = self.current()
+
+        if not voting:
+            return False
+
+        for user in self._user_storage.all():
+            if user.voting_state == 'finished':
+                voting.voted_stocks.extend(user.voting_stocks)
+                voting.voted_steaks.append(user.voting_steaks)
+
+            user.voting_state = None
+            user.voting_steaks = 0
+            user.voting_stocks = []
+            self._user_storage.persist(user)
+
+        voting.finished_at = datetime.datetime.now()
+        self._voting_storage.persist(voting)
+        return True

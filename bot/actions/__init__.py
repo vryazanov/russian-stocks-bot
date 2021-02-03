@@ -6,9 +6,10 @@ from bot.actions.menu import Menu
 from bot.actions.voting import Voting
 from bot.actions.welcome import Welcome
 from bot.actions.start_voting import StartVoting
+from bot.actions.stop_voting import StopVoting
 from bot.actions.winners import Winners
 
 
 __all__ = (
     'Group', 'Users', 'Rules', 'PrivateMessage', 'Voting',
-    'Welcome', 'Winners', 'Menu', 'StartVoting')
+    'Welcome', 'Winners', 'Menu', 'StartVoting', 'StopVoting')
