@@ -1,4 +1,5 @@
 """Add a new purchase."""
+import injector
 import telebot
 import telebot.types
 
@@ -9,6 +10,7 @@ from bot.services import VotingManager, UserService
 class Add(BaseHandler):
     """Handler to add a new purchase.."""
 
+    @injector.inject
     def __init__(self):
         """Primary constructor."""
 

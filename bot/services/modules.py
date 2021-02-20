@@ -4,6 +4,7 @@ import typing
 import telebot
 import injector
 
+import bot.entities
 import bot.services
 import bot.storage
 
@@ -32,3 +33,7 @@ class ServiceModule(injector.Module):
                 bot.settings.STOCKS_BASE_URL,
                 self._codes,
             ))
+        binder.multibind(
+            typing.List[bot.entities.Stock], lambda: binder.injector.get(
+                bot.services.StockService,
+            ).fetch())

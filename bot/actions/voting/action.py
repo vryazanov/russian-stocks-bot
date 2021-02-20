@@ -2,6 +2,7 @@
 import enum
 import typing
 
+import injector
 import telebot
 import telebot.types
 import transitions
@@ -13,7 +14,7 @@ from bot.actions.voting.machine import Machine
 from bot.actions.voting.reply import Reply
 from bot.constants import Commands
 from bot.entities import  Stock, User
-from bot.storage import BaseStorage
+from bot.storage import UserStorage
 from bot.services import VotingManager
 from bot.keyboards import menu
 
@@ -21,8 +22,9 @@ from bot.keyboards import menu
 class Voting(BaseHandler):
     """Manage voting flow."""
 
+    @injector.inject
     def __init__(
-        self, manager: VotingManager, storage: BaseStorage,
+        self, manager: VotingManager, storage: UserStorage,
         stocks: typing.List[Stock],
     ):
         """Primary constructor."""

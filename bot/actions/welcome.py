@@ -1,17 +1,19 @@
 """Welcome handler."""
+import injector
 import telebot
 import telebot.types
 
 from bot.actions.abc import BaseHandler
 from bot.constants import Commands
 from bot.entities import User
-from bot.storage import BaseStorage, NoEntityFound
+from bot.storage import UserStorage, NoEntityFound
 
 
 class Welcome(BaseHandler):
     """Initial handler."""
 
-    def __init__(self, storage: BaseStorage):
+    @injector.inject
+    def __init__(self, storage: UserStorage):
         """Primary constructor."""
         self._storage = storage
 

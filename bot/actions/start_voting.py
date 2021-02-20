@@ -1,4 +1,5 @@
 """Welcome handler."""
+import injector
 import telebot
 import telebot.types
 
@@ -9,6 +10,7 @@ from bot.services import VotingManager, UserService
 class StartVoting(BaseHandler):
     """Initial handler."""
 
+    @injector.inject
     def __init__(self, users: UserService, manager: VotingManager):
         """Primary constructor."""
         self._users = users

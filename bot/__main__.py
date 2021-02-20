@@ -35,36 +35,21 @@ if __name__ == '__main__':
 
     private_messages = bot.actions.PrivateMessage(
         handlers=[
-            bot.actions.Welcome(
-                container.get(bot.storage.UserStorage),
-            ),
-            bot.actions.Voting(
-                container.get(bot.services.VotingManager),
-                container.get(bot.storage.UserStorage),
-                container.get(bot.services.StockService).fetch(),
-            ),
-            bot.actions.Rules(),
-            bot.actions.Menu(),
+            container.get(bot.actions.Welcome),
+            container.get(bot.actions.Voting),
+            container.get(bot.actions.Rules),
+            container.get(bot.actions.Menu),
         ]
     )
 
     admin_group = bot.actions.Group(
         chat_id=bot.settings.BOT_ADMIN_GROUP,
         handlers=[
-            bot.actions.Users(
-                container.get(bot.storage.UserStorage),
-            ),
-            bot.actions.Winners(
-                container.get(bot.storage.UserStorage),
-            ),
-            bot.actions.StartVoting(
-                container.get(bot.services.UserService),
-                container.get(bot.services.VotingManager),
-            ),
-            bot.actions.StopVoting(
-                container.get(bot.services.VotingManager),
-            ),
-            bot.actions.admin.purchases.Add(),
+            container.get(bot.actions.Users),
+            container.get(bot.actions.Winners),
+            container.get(bot.actions.StartVoting),
+            container.get(bot.actions.StopVoting),
+            container.get(bot.actions.admin.purchases.Add),
         ],        
     )
 

@@ -1,14 +1,16 @@
 """Manage list of users."""
+import injector
 import telebot.types
 
 from bot.actions.abc import BaseHandler
-from bot.storage import BaseStorage
+from bot.storage import UserStorage
 
 
 class Users(BaseHandler):
     """Command to show list of bot subcribers."""
 
-    def __init__(self, storage: BaseStorage):
+    @injector.inject
+    def __init__(self, storage: UserStorage):
         """Primary constructor."""
         self._storage = storage
 

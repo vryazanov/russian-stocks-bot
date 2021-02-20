@@ -1,4 +1,5 @@
 """Welcome handler."""
+import injector
 import telebot
 import telebot.types
 
@@ -10,6 +11,7 @@ from bot.storage import UserStorage, VotingStorage
 class StopVoting(BaseHandler):
     """Stop active voting."""
 
+    @injector.inject
     def __init__(self, manager: VotingManager):
         """Primary constructor."""
         self._manager = manager
