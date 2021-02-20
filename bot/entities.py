@@ -78,6 +78,13 @@ class PurchaseItem(pydantic.BaseModel):
 class Purchase(pydantic.BaseModel):
     """Stock purchase."""
 
+    id: uuid.UUID
+    date: datetime.date
     stocks: typing.List[PurchaseItem]
     commission: decimal.Decimal
     cost: decimal.Decimal
+
+    @property
+    def pk(self) -> str:
+        """Return primary key."""
+        return str(self.id)

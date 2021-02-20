@@ -1,11 +1,15 @@
 """Base classes for actions package."""
 import abc
 import functools
+import logging
 import threading
 import typing
 
 import telebot
 import telebot.types
+
+
+LOGGER = logging.getLogger(__name__)
 
 
 class BaseHandler(metaclass=abc.ABCMeta):
@@ -48,8 +52,15 @@ class BaseGroup(metaclass=abc.ABCMeta):
         def handle(handler: BaseHandler):
             @functools.wraps(handler)
             def inner(message: telebot.types.Message):
-                return handler.handle(bot, message)
+                try:
+                    return handler.handle(bot, message)
+                except Exception as e:
+                    print('error')
+                    LOGGER.exception(str(e))
             return inner
 
         for handler in self._handlers:
-            bot.message_handler(func=can_handle(handler))(handle(handler))
+            bot.message_handler(
+                func=can_handle(handler),
+                content_types=('text', 'document'),
+            )(handle(handler))

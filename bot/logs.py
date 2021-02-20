@@ -8,6 +8,7 @@ def setup_logging():
     """Prepare logging configuration."""
     logging.config.dictConfig({
         'version': 1,
+        'disable_existing_loggers': True,
         'formatters': {
             'detailed': {
                 'class': 'logging.Formatter',
@@ -33,7 +34,7 @@ def setup_logging():
             },
         },
         'loggers': {
-            '': {
+            'bot': {
                 'handlers': ['console', 'telegram'],
                 'level': 'INFO',
             },

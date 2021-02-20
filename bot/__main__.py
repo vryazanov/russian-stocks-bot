@@ -16,7 +16,7 @@ import bot.storage
 
 bot.logs.setup_logging()
 
-LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger('bot')
 
 
 if __name__ == '__main__':
