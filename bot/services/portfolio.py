@@ -7,7 +7,7 @@ import typing
 import injector
 
 from bot.entities import Purchase
-from bot.services import StockService
+from bot.services.stocks import StockService
 from bot.storage import PurchaseStorage
 
 
