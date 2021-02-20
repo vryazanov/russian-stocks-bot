@@ -5,7 +5,7 @@ import pathlib
 import typing
 import uuid
 
-from bot.entities import User, Voting
+from bot.entities import User, Voting, Purchase
 
 
 EntityT = typing.TypeVar('EntityT')
@@ -86,3 +86,10 @@ class VotingStorage(BaseFileStorage[Voting]):
 
     entity_cls = Voting
     prefix = 'voting'
+
+
+class PurchaseStorage(BaseFileStorage[Purchase]):
+    """Persist purchases to files."""
+
+    entity_cls = Purchase
+    prefix = 'purchase'

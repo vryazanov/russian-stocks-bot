@@ -1,5 +1,6 @@
 """Project domain entities."""
 import datetime
+import decimal
 import enum
 import typing
 import uuid
@@ -66,3 +67,18 @@ class Stock(pydantic.BaseModel):
     code: str
     order: int
     lot: int
+
+
+class PurchaseItem(pydantic.BaseModel):
+    """Purchase item."""
+
+    stock: StockName
+    quantity: int
+
+
+class Purchase(pydantic.BaseModel):
+    """Stock purchase."""
+
+    stocks: typing.List[PurchaseItem]
+    commission: decimal.Decimal
+    cost: decimal.Decimal

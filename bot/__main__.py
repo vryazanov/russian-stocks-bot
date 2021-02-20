@@ -6,6 +6,7 @@ import telebot
 import telebot.types
 
 import bot.actions
+import bot.actions.admin.purchases
 import bot.logs
 import bot.services
 import bot.settings
@@ -54,7 +55,8 @@ if __name__ == '__main__':
             bot.actions.Users(user_storage),
             bot.actions.Winners(user_storage),
             bot.actions.StartVoting(user_service, voting_service),
-            bot.actions.StopVoting(voting_service)
+            bot.actions.StopVoting(voting_service),
+            bot.actions.admin.purchases.Add(),
         ],        
     )
     admin_group.as_bot_handler(my_bot)
