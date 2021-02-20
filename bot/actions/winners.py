@@ -22,10 +22,7 @@ class Winners(BaseHandler):
         return message.text == '/winners'
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
-        """Setup a new voting."""
-
-        users = self._storage.all()
-
+        """Show winners of active voting."""
         users_voted = 0
         counter_stocks = collections.Counter()
         counter_steaks = collections.Counter()
@@ -46,7 +43,7 @@ class Winners(BaseHandler):
         chunks = [
             f'Всего проголосовало: {users_voted}.',
             f'Голоса за тикеры: {stocks}.',
-            f'Голоса за стейки: {steaks}.'
+            f'Голоса за стейки: {steaks}.',
         ]
 
         bot.send_message(message.chat.id, '\n'.join(chunks))

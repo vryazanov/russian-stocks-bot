@@ -4,7 +4,7 @@ import typing
 import uuid
 
 from bot.entities import Voting
-from bot.storage import VotingStorage, UserStorage
+from bot.storage import UserStorage, VotingStorage
 
 
 class VotingManager:

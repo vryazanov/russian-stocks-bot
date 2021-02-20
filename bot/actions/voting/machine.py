@@ -6,13 +6,13 @@ import transitions
 from bot.actions.voting import reply
 from bot.actions.voting.constants import ActionEnum, StateEnum
 from bot.constants import Commands
-from bot.entities import User
 
 
 Stocks = typing.List[str]
 
 
 class Machine:
+    """State machine to manage voting flow."""
 
     def __init__(self, state: StateEnum, reply: reply.Reply):
         """Primary constructor."""
@@ -20,7 +20,7 @@ class Machine:
         self._machine = transitions.Machine(
             model=self, states=StateEnum, initial=state, transitions=[
                 {
-                    'source': StateEnum.initial, 
+                    'source': StateEnum.initial,
                     'trigger': ActionEnum.ask_for_stocks,
                     'dest': StateEnum.waiting_for_stock,
                     'before': 'on_stock_initial',
@@ -67,7 +67,7 @@ class Machine:
                     'trigger': ActionEnum.ask_for_stocks,
                     'dest': StateEnum.waiting_for_stock,
                     'before': ['on_stock_more'],
-                },                
+                },
                 # start voting for steaks
                 {
                     'source': StateEnum.stock,
@@ -107,7 +107,7 @@ class Machine:
                     'trigger': ActionEnum.vote_for_steak,
                     'dest': StateEnum.waiting_for_steak,
                     'unless': ['is_steak_valid'],
-                    'before': ['on_steak_invalid']
+                    'before': ['on_steak_invalid'],
                 },
                 # steak is good
                 {
@@ -121,7 +121,7 @@ class Machine:
                     'trigger': ActionEnum.finish,
                     'dest': StateEnum.finished,
                     'before': ['on_finish'],
-                },     
+                },
                 # repeat
                 {
                     'source': StateEnum.finished,
@@ -132,8 +132,9 @@ class Machine:
 
     def on_stock_initial(self, stocks: Stocks, max_stocks: int):
         """User is ready to vote for stocks."""
-        text = 'Что будем покупать? Максимум компаний для покупки ' \
-               'в этот раз: {}.'.format(max_stocks)
+        text = (
+            'Что будем покупать? Максимум компаний для покупки '
+            'в этот раз: {0}.'.format(max_stocks))
         keyboard = reply.keyboard_stocks(stocks, [Commands.nothing_to_buy])
         self._reply.send(text, keyboard)
 
@@ -151,22 +152,25 @@ class Machine:
 
     def on_steak_initial(self, max_steaks: int):
         """User is ready to vote for steaks."""
-        text = 'Отлично, теперь надо определиться сколько стейков ' \
-               'мы будем инвестировать. Выберете один из вариантов.'
+        text = (
+            'Отлично, теперь надо определиться сколько стейков '
+            'мы будем инвестировать. Выберете один из вариантов.')
         keyboard = reply.keyboard_steaks(max_steaks)
         self._reply.send(text, keyboard)
 
     def on_steak_invalid(self, max_steaks: int, steaks: str):
+        """Notify user about invalid choice."""
         text = 'Выберете один из предложенных вариантов.'
         self._reply.send(text)
 
     def on_finish(self, stocks: Stocks, steaks: int):
         """When user finish voting."""
-        text = 'Ставки сделаны, ставок больше нет! Вы проголосовали за: ' \
-               '{stocks}. И желаете инвестировать стейков: {steaks}.'.format(
-                   stocks=', '.join(stocks),
-                   steaks=steaks,
-               )
+        text = (
+            'Ставки сделаны, ставок больше нет! Вы проголосовали за: '
+            '{stocks}. И желаете инвестировать стейков: {steaks}.'.format(
+                stocks=', '.join(stocks),
+                steaks=steaks,
+            ))
         self._reply.send(text, reply.keyboard_menu())
 
     def on_finish_nothing_to_buy(self, stocks: Stocks, command: str):
@@ -175,9 +179,11 @@ class Machine:
         self._reply.send(text, reply.keyboard_menu())
 
     def on_finish_no_steaks(self, stocks: Stocks):
-        text = 'Голос принят, ваш выбор: {stocks}. В этот раз за кол-во ' \
-               'стейков не голосуем, т.к. доступен только один ' \
-               'стейк к покупке.'.format(stocks=', '.join(stocks))
+        """Notify user when voting is finished."""
+        text = (
+            'Голос принят, ваш выбор: {stocks}. В этот раз за кол-во '
+            'стейков не голосуем, т.к. доступен только один '
+            'стейк к покупке.'.format(stocks=', '.join(stocks)))
         self._reply.send(text, reply.keyboard_menu())
 
     def is_nothing_to_buy_cmd(self, stocks: Stocks, command: str) -> bool:
@@ -198,4 +204,4 @@ class Machine:
 
     def is_steak_valid(self, max_steaks: int, steaks: str):
         """Check if user sent correct value."""
-        return steaks in [str(steak) for steak in range(1, max_steaks + 1)]
+        return steaks in map(range(1, max_steaks + 1))

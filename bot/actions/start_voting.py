@@ -4,7 +4,7 @@ import telebot
 import telebot.types
 
 from bot.actions.abc import BaseHandler
-from bot.services import VotingManager, UserService
+from bot.services import UserService, VotingManager
 
 
 class StartVoting(BaseHandler):

@@ -4,15 +4,13 @@ import telebot.types
 
 from bot.actions.abc import BaseHandler
 from bot.constants import Commands
-from bot.entities import User
-from bot.storage import BaseStorage, NoEntityFound
 
 
 class Rules(BaseHandler):
     """Action that shows rules."""
 
     def can_handle(self, message: telebot.types.Message) -> bool:
-        """Always return true"""
+        """Return true if user wants rules."""
         return message.text == Commands.rules
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):

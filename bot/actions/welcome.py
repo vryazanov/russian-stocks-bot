@@ -6,7 +6,7 @@ import telebot.types
 from bot.actions.abc import BaseHandler
 from bot.constants import Commands
 from bot.entities import User
-from bot.storage import UserStorage, NoEntityFound
+from bot.storage import NoEntityFound, UserStorage
 
 
 class Welcome(BaseHandler):
@@ -20,7 +20,7 @@ class Welcome(BaseHandler):
     def is_new_user(self, user_id: int) -> bool:
         """Check if user is new."""
         try:
-            user = self._storage.get(str(user_id))
+            self._storage.get(str(user_id))
         except NoEntityFound:
             return True
         return False

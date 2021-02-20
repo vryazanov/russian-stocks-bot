@@ -1,6 +1,5 @@
 """Telegram bot."""
 import logging
-import pathlib
 
 import injector
 import telebot
@@ -39,7 +38,7 @@ if __name__ == '__main__':
             container.get(bot.actions.Voting),
             container.get(bot.actions.Rules),
             container.get(bot.actions.Menu),
-        ]
+        ],
     )
 
     admin_group = bot.actions.Group(
@@ -50,7 +49,7 @@ if __name__ == '__main__':
             container.get(bot.actions.StartVoting),
             container.get(bot.actions.StopVoting),
             container.get(bot.actions.admin.purchases.Add),
-        ],        
+        ],
     )
 
     my_bot = container.get(telebot.TeleBot)

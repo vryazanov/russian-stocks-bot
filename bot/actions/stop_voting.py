@@ -4,8 +4,7 @@ import telebot
 import telebot.types
 
 from bot.actions.abc import BaseHandler
-from bot.services import VotingManager, UserService
-from bot.storage import UserStorage, VotingStorage
+from bot.services import VotingManager
 
 
 class StopVoting(BaseHandler):

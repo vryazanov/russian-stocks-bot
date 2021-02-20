@@ -5,17 +5,17 @@ import bot.settings
 
 
 def setup_logging():
-    """Setup logging configuration."""
+    """Prepare logging configuration."""
     logging.config.dictConfig({
         'version': 1,
         'formatters': {
             'detailed': {
                 'class': 'logging.Formatter',
-                'format': '%(asctime)s %(name)-15s %(levelname)-8s %(processName)-10s %(message)s'
+                'format': '%(asctime)s %(name)-15s %(levelname)-8s %(processName)-10s %(message)s',  # noqa
             },
             'telegram': {
                 'class': 'telegram_handler.HtmlFormatter',
-                'fmt': '%(levelname)s %(message)s'
+                'fmt': '%(levelname)s %(message)s',
             },
         },
         'handlers': {
@@ -36,6 +36,6 @@ def setup_logging():
             '': {
                 'handlers': ['console', 'telegram'],
                 'level': 'INFO',
-            }
-        }
+            },
+        },
     })

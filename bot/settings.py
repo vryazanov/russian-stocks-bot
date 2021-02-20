@@ -1,3 +1,4 @@
+"""Keep bot settings here."""
 import os
 import pathlib
 

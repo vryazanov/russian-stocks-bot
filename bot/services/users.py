@@ -1,3 +1,4 @@
+"""User related services."""
 import logging
 
 import telebot
@@ -9,6 +10,7 @@ LOGGER = logging.getLogger(__name__)
 
 
 class UserService:
+    """User service."""
 
     def __init__(self, bot: telebot.TeleBot, storage: UserStorage):
         """Primary constructor."""
@@ -16,6 +18,7 @@ class UserService:
         self._storage = storage
 
     def send_to_all(self, text: str) -> int:
+        """Send message to all users."""
         cnt = 0
         for user in self._storage.all():
             try:

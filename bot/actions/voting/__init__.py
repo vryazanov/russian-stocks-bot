@@ -2,4 +2,4 @@
 from bot.actions.voting.action import Voting
 
 
-__all__ = ('VotinAction',)
+__all__ = ('Voting',)

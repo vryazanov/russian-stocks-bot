@@ -1,12 +1,11 @@
 """Base classes for actions package."""
 import abc
-import threading
 import functools
+import threading
 import typing
-import weakref
 
 import telebot
-import telebot.types    
+import telebot.types
 
 
 class BaseHandler(metaclass=abc.ABCMeta):
@@ -34,7 +33,7 @@ class BaseGroup(metaclass=abc.ABCMeta):
         """Return true if this group can handle action."""
 
     def as_bot_handler(self, bot: telebot.TeleBot, *args, **kwargs):
-        """Setup handler and add some extra condition."""
+        """Prepare handler and add some extra condition."""
 
         def can_handle(handler: BaseHandler):
             @functools.wraps(handler)
@@ -54,4 +53,3 @@ class BaseGroup(metaclass=abc.ABCMeta):
 
         for handler in self._handlers:
             bot.message_handler(func=can_handle(handler))(handle(handler))
-

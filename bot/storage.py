@@ -1,11 +1,9 @@
 """Data storage."""
 import abc
-import json
 import pathlib
 import typing
-import uuid
 
-from bot.entities import User, Voting, Purchase
+from bot.entities import Purchase, User, Voting
 
 
 EntityT = typing.TypeVar('EntityT')
@@ -33,7 +31,7 @@ class BaseStorage(typing.Generic[EntityT], metaclass=abc.ABCMeta):
 
 class BaseFileStorage(BaseStorage[EntityT]):
     """File system storage.
-    
+
     NOTE: it's not thread-safe.
     """
 

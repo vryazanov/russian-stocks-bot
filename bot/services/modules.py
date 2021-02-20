@@ -1,8 +1,8 @@
 """DI configuration for services."""
 import typing
 
-import telebot
 import injector
+import telebot
 
 import bot.entities
 import bot.services

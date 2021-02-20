@@ -1,5 +1,4 @@
 """Voting responses."""
-import abc
 import typing
 
 import telebot
@@ -19,6 +18,7 @@ def keyboard_steaks(max_steaks: int):
     keyboard.add(*buttons)
 
     return keyboard
+
 
 def keyboard_stocks(stocks: typing.List[str], commands: typing.List[Commands]):
     """Keyboard for stocks voting."""
@@ -53,4 +53,3 @@ class Reply:
     ):
         """Reply to message."""
         self._bot.reply_to(self._message, text, reply_markup=keyboard)
-

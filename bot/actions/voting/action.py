@@ -1,22 +1,19 @@
 """Voting handler."""
-import enum
 import typing
 
 import injector
 import telebot
 import telebot.types
-import transitions
-import transitions.extensions.nesting
 
 from bot.actions.abc import BaseHandler
 from bot.actions.voting.constants import StateEnum
 from bot.actions.voting.machine import Machine
 from bot.actions.voting.reply import Reply
 from bot.constants import Commands
-from bot.entities import  Stock, User
-from bot.storage import UserStorage
-from bot.services import VotingManager
+from bot.entities import Stock
 from bot.keyboards import menu
+from bot.services import VotingManager
+from bot.storage import UserStorage
 
 
 class Voting(BaseHandler):
@@ -45,6 +42,7 @@ class Voting(BaseHandler):
         return user.voting_state != StateEnum.finished
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
+        """Handle user action based on current state."""
         user = self._storage.get(message.from_user.id)
 
         reply = Reply(bot, message)
@@ -65,7 +63,7 @@ class Voting(BaseHandler):
 
         max_stocks = voting.max_stocks
         max_steaks = voting.max_steaks
-        
+
         def get_stocks() -> typing.List[Stock]:
             return [
                 stock.name for stock in self._stocks

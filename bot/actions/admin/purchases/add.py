@@ -4,7 +4,6 @@ import telebot
 import telebot.types
 
 from bot.actions.abc import BaseHandler
-from bot.services import VotingManager, UserService
 
 
 class Add(BaseHandler):
@@ -16,9 +15,9 @@ class Add(BaseHandler):
 
     def can_handle(self, message: telebot.types.Message) -> bool:
         """Return true if it's uknown user."""
-        return message.text and message.text.startswith('/addpurchase')
+        return message.text and message.text.startswith('/purchase-add')
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
         """Parse / validate and save purchase."""
-        text = f'Тут что-то будет.'
+        text = 'Тут что-то будет.'
         bot.send_message(message.chat.id, text)

@@ -20,5 +20,5 @@ class Users(BaseHandler):
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
         """Show list of bot's subscribers."""
-        text = 'Подписчиков у бота: {}'.format(len(self._storage.all()))
+        text = 'Подписчиков у бота: {0}'.format(len(self._storage.all()))
         bot.send_message(message.chat.id, text)

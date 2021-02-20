@@ -1,5 +1,4 @@
 """Classes to wotk with stocks."""
-import pathlib
 import typing
 
 import requests
@@ -27,8 +26,8 @@ class StockService:
                         name=stock_data['name'],
                         code=stock_data['code'],
                         lot=stock_data['lot'],
-                        order=self._ordered.index(stock_data['code'])
-                    )
+                        order=self._ordered.index(stock_data['code']),
+                    ),
                 )
 
-        return list(sorted(stocks, key=lambda stock: stock.order))
+        return sorted(stocks, key=lambda stock: stock.order)

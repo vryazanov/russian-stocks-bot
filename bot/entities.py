@@ -1,7 +1,6 @@
 """Project domain entities."""
 import datetime
 import decimal
-import enum
 import typing
 import uuid
 
