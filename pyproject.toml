@@ -12,6 +12,7 @@ requests = "^2.25.1"
 pydantic = "^1.7.3"
 transitions = "^0.8.6"
 python-telegram-handler = "^2.2"
+injector = "^0.18.4"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.790"
