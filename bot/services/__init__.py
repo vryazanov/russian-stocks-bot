@@ -1,7 +1,8 @@
 """Init for services."""
+from bot.services.portfolio import Portfolio
 from bot.services.stocks import StockService
 from bot.services.users import UserService
 from bot.services.voting import VotingManager
 
 
-__all__ = ('StockService', 'VotingManager', 'UserService')
+__all__ = ('StockService', 'VotingManager', 'UserService', 'Portfolio')

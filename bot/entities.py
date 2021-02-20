@@ -68,10 +68,17 @@ class Stock(pydantic.BaseModel):
     lot: int
 
 
+class Quote(pydantic.BaseModel):
+    """Quote."""
+
+    open_price: decimal.Decimal
+    close_price: decimal.Decimal
+
+
 class PurchaseItem(pydantic.BaseModel):
     """Purchase item."""
 
-    stock: StockName
+    name: StockName
     quantity: int
 
 

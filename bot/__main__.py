@@ -6,6 +6,7 @@ import telebot
 
 import bot.actions
 import bot.actions.admin.purchases
+import bot.actions.admin.results
 import bot.logs
 import bot.modules
 import bot.services
@@ -50,6 +51,7 @@ if __name__ == '__main__':
             container.get(bot.actions.StopVoting),
             container.get(bot.actions.admin.purchases.Add),
             container.get(bot.actions.admin.purchases.List),
+            container.get(bot.actions.admin.results.Results),
         ],
     )
 
