@@ -17,7 +17,6 @@ class Rules(BaseHandler):
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
         """Save user to storage and send welcome message."""
-
         text = open('./articles/rules.txt').read()
 
         keyboard = telebot.types.ReplyKeyboardMarkup(

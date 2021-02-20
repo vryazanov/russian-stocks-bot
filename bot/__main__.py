@@ -6,12 +6,13 @@ import telebot
 import telebot.types
 
 import bot.actions
+import bot.logs
 import bot.services
 import bot.settings
 import bot.storage
 
 
-logging.basicConfig(level=logging.INFO)
+bot.logs.setup_logging()
 
 LOGGER = logging.getLogger(__name__)
 
@@ -59,4 +60,8 @@ if __name__ == '__main__':
     admin_group.as_bot_handler(my_bot)
 
     LOGGER.info('Done. It is up and running.')
-    my_bot.polling()
+
+    try:
+        my_bot.polling()
+    except Exception as e:
+        LOGGER.exception(str(e))
