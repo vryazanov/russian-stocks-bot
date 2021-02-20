@@ -18,11 +18,10 @@ class Results(BaseHandler):
         self._purchases = purchases
 
     def can_handle(self, message: telebot.types.Message) -> bool:
-        """Return true if it's uknown user."""
-        print(message)
-        return message.text and message.text.startswith(self.command)
+        """Return true if it's a command to show results."""
+        return message.text == self.command
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
-        """Parse / validate and save purchase."""
+        """Prepare graph and send to the channel."""
         text = 'Тут что-то будет.'
         bot.send_message(message.chat.id, text)

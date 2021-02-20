@@ -55,7 +55,6 @@ class BaseGroup(metaclass=abc.ABCMeta):
                 try:
                     return handler.handle(bot, message)
                 except Exception as e:
-                    print('error')
                     LOGGER.exception(str(e))
             return inner
 

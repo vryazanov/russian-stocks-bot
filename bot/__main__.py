@@ -49,6 +49,7 @@ if __name__ == '__main__':
             container.get(bot.actions.StartVoting),
             container.get(bot.actions.StopVoting),
             container.get(bot.actions.admin.purchases.Add),
+            container.get(bot.actions.admin.purchases.List),
         ],
     )
 

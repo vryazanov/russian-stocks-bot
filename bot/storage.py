@@ -58,7 +58,7 @@ class BaseFileStorage(BaseStorage[EntityT]):
 
         return self.entity_cls.parse_file(entity_path)
 
-    def all(self) -> typing.List[User]:
+    def all(self) -> typing.List[EntityT]:
         """Fetch all available entities."""
         entities = []
         for path in self._path.iterdir():
