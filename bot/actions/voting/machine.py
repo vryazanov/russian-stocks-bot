@@ -204,4 +204,4 @@ class Machine:
 
     def is_steak_valid(self, max_steaks: int, steaks: str):
         """Check if user sent correct value."""
-        return steaks in map(range(1, max_steaks + 1))
+        return steaks in map(str, range(1, max_steaks + 1))
