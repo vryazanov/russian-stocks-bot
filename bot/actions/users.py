@@ -20,5 +20,17 @@ class Users(BaseHandler):
 
     def handle(self, bot: telebot.TeleBot, message: telebot.types.Message):
         """Show list of bot's subscribers."""
-        text = 'Подписчиков у бота: {0}'.format(len(self._storage.all()))
+        active, blocked = 0, 0
+
+        for user in self._storage.all():
+            if user.is_blocked:
+                blocked += 1
+            else:
+                active += 1
+
+        text = (
+            'Активных подписчиков у бота: {0}.\n'
+            'Заблокировали: {1}'
+        ).format(active, blocked)
+
         bot.send_message(message.chat.id, text)

@@ -23,6 +23,8 @@ class User(pydantic.BaseModel):
     voting_stocks: typing.List[str] = pydantic.Field(default_factory=list)
     voting_steaks: int = 0
 
+    is_blocked: bool = False
+
     @property
     def pk(self) -> str:
         """Return primary key."""

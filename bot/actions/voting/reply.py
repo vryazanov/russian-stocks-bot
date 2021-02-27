@@ -30,7 +30,7 @@ def keyboard_stocks(stocks: typing.List[str], commands: typing.List[Commands]):
 
 
 def keyboard_menu():
-    """Keyboatd - back to menu."""
+    """Keyboard - back to menu."""
     keyboard = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.row(
         telebot.types.KeyboardButton(Commands.repeat_voting),
