@@ -92,6 +92,7 @@ class Purchase(pydantic.BaseModel):
     stocks: typing.List[PurchaseItem]
     commission: decimal.Decimal
     cost: decimal.Decimal
+    cash: decimal.Decimal
 
     @property
     def pk(self) -> str:

@@ -43,6 +43,8 @@ class Portfolio:
 
         results: typing.Tuple[datetime.date, decimal.Decimal] = []
 
+        cash_left = 0
+
         for date in daterange(start_date, end_date):
             purchase = purchase_per_date.get(date)
 
@@ -62,8 +64,9 @@ class Portfolio:
                 current_stocks.update({
                     stock.name: stock.quantity
                     for stock in purchase.stocks})
-                total_price += purchase.cost
+                total_price = purchase.cost
+                cash_left += purchase.cash
 
-            results.append((date, total_price))
+            results.append((date, total_price + cash_left))
 
         return results
