@@ -17,3 +17,4 @@ spec:
       value: http://81.163.24.230:8000/
     - name: STORAGE_PATH
       value: /storage
+    imagePullPolicy: Always
