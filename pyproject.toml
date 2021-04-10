@@ -13,12 +13,15 @@ pydantic = "^1.7.3"
 transitions = "^0.8.6"
 python-telegram-handler = "^2.2"
 injector = "^0.18.4"
-matplotlib = "^3.3.4"
+matplotlib = {version = "^3.3.4", optional = true}
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.790"
 isort = "^5.7.0"
 wemake-python-styleguide = "^0.15.1"
+
+[tool.poetry.extras]
+local = ["matplotlib"] 
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
