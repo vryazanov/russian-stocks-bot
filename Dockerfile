@@ -1,6 +1,7 @@
 FROM python:3.8.2-slim as base
 
 RUN apt-get update && apt-get install -y \
+    g++ \
     libpq-dev \
     libffi-dev \
     libssl-dev \
