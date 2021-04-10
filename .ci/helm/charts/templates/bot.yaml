@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bot
+spec:
+  imagePullSecrets:
+  - name: regcred
+  containers:
+  - name: bot
+    image: ghcr.io/vryazanov/russian-stock-bot:test
+    env:
+    - name: BOT_TOKEN
+      value: "1551393970:AAH7-z8aoOamvRuan9b3Zb0L2z5ZUh7iN6g"
+    - name: BOT_ADMIN_GROUP
+      value: "-459319778"
+    - name: STOCKS_BASE_URL
+      value: http://81.163.24.230:8000/
+    - name: STORAGE_PATH
+      value: /storage
