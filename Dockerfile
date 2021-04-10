@@ -15,8 +15,8 @@ RUN pip install poetry
 WORKDIR /app
 COPY . .
 
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-dev --no-root
+RUN poetry export > requirements.txt
+RUN pip install -r requirements.txt --no-deps
 
 EXPOSE $PORT
 
