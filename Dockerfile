@@ -13,13 +13,13 @@ RUN apt-get update && apt-get install -y \
     netcat \
     gcc
 
-WORKDIR /srv
-RUN git clone https://github.com/matplotlib/matplotlib
-RUN cd matplotlib && python setup.py build && python setup.py install
-
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN pip install --upgrade pip
 RUN pip install poetry
+
+WORKDIR /srv
+RUN git clone https://github.com/matplotlib/matplotlib
+RUN cd matplotlib && python setup.py build && python setup.py install
 
 WORKDIR /app
 COPY . .
