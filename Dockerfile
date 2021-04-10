@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     libmagic-dev \
     python3-matplotlib \
+    python3-cryptography \
     netcat \
     gcc
 
