@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     libmagic-dev \
     python3-matplotlib \
     python3-cryptography \
+    python-imaging \
+    zlib1g-dev \
     git \
     netcat \
     gcc
