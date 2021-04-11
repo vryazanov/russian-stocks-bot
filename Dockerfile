@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y \
     python3-cryptography \
     libjpeg-dev \
     libfreetype6-dev \
-    liblcms1-dev \
     libopenjp2-7 \
     libtiff5 \
     zlib1g-dev \
