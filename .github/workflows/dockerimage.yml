@@ -55,6 +55,7 @@ jobs:
       with:
         release: 'bot'
         namespace: 'default'
+        helm: helm3
         chart: '.ci/helm/charts'
         token: '${{ github.token }}'
         values: |
