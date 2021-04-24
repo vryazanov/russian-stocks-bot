@@ -26,11 +26,12 @@ WORKDIR /srv
 RUN git clone https://github.com/matplotlib/matplotlib
 RUN cd matplotlib && python setup.py build && python setup.py install
 
-WORKDIR /app
-COPY . .
-
+COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev --no-root
+
+WORKDIR /app
+COPY . .
 
 EXPOSE $PORT
 
