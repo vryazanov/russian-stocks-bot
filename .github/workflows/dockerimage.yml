@@ -55,7 +55,7 @@ jobs:
       with:
         release: 'app'
         namespace: 'default'
-        chart: 'app'
+        chart: '.ci/helm/charts'
         token: '${{ github.token }}'
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
