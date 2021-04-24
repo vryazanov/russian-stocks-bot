@@ -1,6 +1,7 @@
 """Telegram bot."""
 import logging
 
+import click
 import injector
 import telebot
 
@@ -15,6 +16,7 @@ import bot.services
 import bot.services.modules
 import bot.settings
 import bot.storage
+import bot.cron.history
 
 
 bot.logs.setup_logging()
@@ -22,9 +24,8 @@ bot.logs.setup_logging()
 LOGGER = logging.getLogger('bot')
 
 
-if __name__ == '__main__':
-    LOGGER.info('Starting...')
-
+def get_container():
+    """Prepare and return base DI container."""
     codes = [code.strip() for code in open('./ordered.txt')]
 
     container = injector.Injector(modules=[
@@ -33,7 +34,19 @@ if __name__ == '__main__':
         bot.services.modules.ServiceModule(codes),
     ])
 
-    LOGGER.info('Initializing handlers...')
+    return container
+
+
+@click.group()
+def cli():
+    """Nothing to do."""
+
+
+@cli.command()
+def polling():
+    """Start polling."""
+    LOGGER.info('Starting bot...')
+    container = get_container()
 
     private_messages = bot.actions.PrivateMessage(
         handlers=[
@@ -70,3 +83,23 @@ if __name__ == '__main__':
         my_bot.polling()
     except Exception as e:
         LOGGER.exception(str(e))
+
+
+@cli.group()
+def cron():
+    """Blank group for cron jobs."""
+
+
+@cron.command()
+def fetch():
+    """Fetch historical prices."""
+    container = get_container()
+
+    bot.cron.history.fetch(
+        container.get(bot.storage.PurchaseStorage),
+        '123'
+    )
+
+
+if __name__ == '__main__':
+    cli()

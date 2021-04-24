@@ -1,0 +1,1136 @@
+[
+    {
+        "name": "\u0421\u0431\u0435\u0440\u0431\u0430\u043d\u043a",
+        "code": "SBER",
+        "order": 0,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u0431\u0435\u0440\u0431\u0430\u043d\u043a-\u043f",
+        "code": "SBERP",
+        "order": 1,
+        "lot": 10
+    },
+    {
+        "name": "\u0413\u0410\u0417\u041f\u0420\u041e\u041c \u0430\u043e",
+        "code": "GAZP",
+        "order": 2,
+        "lot": 10
+    },
+    {
+        "name": "\u0413\u041c\u041a\u041d\u043e\u0440\u041d\u0438\u043a",
+        "code": "GMKN",
+        "order": 3,
+        "lot": 1
+    },
+    {
+        "name": "\u041b\u0423\u041a\u041e\u0419\u041b",
+        "code": "LKOH",
+        "order": 4,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u043e\u0441\u043d\u0435\u0444\u0442\u044c",
+        "code": "ROSN",
+        "order": 5,
+        "lot": 10
+    },
+    {
+        "name": "\u0422\u0430\u0442\u043d\u0444\u0442 3\u0430\u043e",
+        "code": "TATN",
+        "order": 6,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u0430\u0442\u043d\u0444\u0442 3\u0430\u043f",
+        "code": "TATNP",
+        "order": 7,
+        "lot": 1
+    },
+    {
+        "name": "\u041f\u043e\u043b\u044e\u0441",
+        "code": "PLZL",
+        "order": 8,
+        "lot": 1
+    },
+    {
+        "name": "Yandex clA",
+        "code": "YNDX",
+        "order": 9,
+        "lot": 1
+    },
+    {
+        "name": "Polymetal",
+        "code": "POLY",
+        "order": 10,
+        "lot": 1
+    },
+    {
+        "name": "\u041c\u0430\u0433\u043d\u0438\u0442 \u0430\u043e",
+        "code": "MGNT",
+        "order": 11,
+        "lot": 1
+    },
+    {
+        "name": "\u041d\u043e\u0432\u0430\u0442\u044d\u043a \u0430\u043e",
+        "code": "NVTK",
+        "order": 12,
+        "lot": 1
+    },
+    {
+        "name": "\u041d\u041b\u041c\u041a \u0430\u043e",
+        "code": "NLMK",
+        "order": 13,
+        "lot": 10
+    },
+    {
+        "name": "\u0410\u041b\u0420\u041e\u0421\u0410 \u0430\u043e",
+        "code": "ALRS",
+        "order": 14,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u0435\u0432\u0421\u0442-\u0430\u043e",
+        "code": "CHMF",
+        "order": 15,
+        "lot": 1
+    },
+    {
+        "name": "TCS-\u0433\u0434\u0440",
+        "code": "TCSG",
+        "order": 16,
+        "lot": 1
+    },
+    {
+        "name": "\u041c\u043e\u0441\u0411\u0438\u0440\u0436\u0430",
+        "code": "MOEX",
+        "order": 17,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u041c\u041a",
+        "code": "MAGN",
+        "order": 18,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u0443\u0440\u0433\u043d\u0444\u0433\u0437",
+        "code": "SNGS",
+        "order": 19,
+        "lot": 100
+    },
+    {
+        "name": "\u0421\u0443\u0440\u0433\u043d\u0444\u0433\u0437-\u043f",
+        "code": "SNGSP",
+        "order": 20,
+        "lot": 100
+    },
+    {
+        "name": "\u0412\u0422\u0411 \u0430\u043e",
+        "code": "VTBR",
+        "order": 21,
+        "lot": 10000
+    },
+    {
+        "name": "\u041c\u0422\u0421-\u0430\u043e",
+        "code": "MTSS",
+        "order": 22,
+        "lot": 10
+    },
+    {
+        "name": "OZON-\u0430\u0434\u0440",
+        "code": "OZON",
+        "order": 23,
+        "lot": 1
+    },
+    {
+        "name": "MAIL-\u0433\u0434\u0440",
+        "code": "MAIL",
+        "order": 24,
+        "lot": 1
+    },
+    {
+        "name": "\u0418\u043d\u0442\u0435\u0440\u0420\u0410\u041e\u0430\u043e",
+        "code": "IRAO",
+        "order": 25,
+        "lot": 1000
+    },
+    {
+        "name": "FIVE-\u0433\u0434\u0440",
+        "code": "FIVE",
+        "order": 26,
+        "lot": 1
+    },
+    {
+        "name": "\u0410\u044d\u0440\u043e\u0444\u043b\u043e\u0442",
+        "code": "AFLT",
+        "order": 27,
+        "lot": 10
+    },
+    {
+        "name": "\u0413\u0430\u0437\u043f\u0440\u043d\u0435\u0444\u0442\u044c",
+        "code": "SIBN",
+        "order": 28,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u0438\u0441\u0442\u0435\u043c\u0430 \u0430\u043e",
+        "code": "AFKS",
+        "order": 29,
+        "lot": 100
+    },
+    {
+        "name": "\u0420\u0423\u0421\u0410\u041b \u0430\u043e",
+        "code": "RUAL",
+        "order": 30,
+        "lot": 10
+    },
+    {
+        "name": "\u0414\u0435\u0442\u0441\u043a\u0438\u0439\u041c\u0438\u0440",
+        "code": "DSKY",
+        "order": 31,
+        "lot": 10
+    },
+    {
+        "name": "\u0422\u0440\u0430\u043d\u0441\u043d\u0444 \u0430\u043f",
+        "code": "TRNFP",
+        "order": 32,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u0443\u0441\u0413\u0438\u0434\u0440\u043e",
+        "code": "HYDR",
+        "order": 33,
+        "lot": 1000
+    },
+    {
+        "name": "\u041c\u0435\u0447\u0435\u043b \u0430\u043e",
+        "code": "MTLR",
+        "order": 34,
+        "lot": 1
+    },
+    {
+        "name": "\u041c\u0435\u0447\u0435\u043b \u0430\u043f",
+        "code": "MTLRP",
+        "order": 35,
+        "lot": 10
+    },
+    {
+        "name": "\u0424\u043e\u0441\u0410\u0433\u0440\u043e \u0430\u043e",
+        "code": "PHOR",
+        "order": 36,
+        "lot": 1
+    },
+    {
+        "name": "\u0424\u0421\u041a \u0415\u042d\u0421 \u0430\u043e",
+        "code": "FEES",
+        "order": 37,
+        "lot": 10000
+    },
+    {
+        "name": "\u0421\u043e\u0432\u043a\u043e\u043c\u0444\u043b\u043e\u0442",
+        "code": "FLOT",
+        "order": 38,
+        "lot": 10
+    },
+    {
+        "name": "\u0420\u043e\u0441\u0442\u0435\u043b -\u0430\u043e",
+        "code": "RTKM",
+        "order": 39,
+        "lot": 10
+    },
+    {
+        "name": "\u0420\u043e\u0441\u0442\u0435\u043b -\u0430\u043f",
+        "code": "RTKMP",
+        "order": 40,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u041a\u0411 \u0430\u043e",
+        "code": "CBOM",
+        "order": 41,
+        "lot": 100
+    },
+    {
+        "name": "\u0420\u043e\u0441\u0441\u0435\u0442\u0438 \u0430\u043e",
+        "code": "RSTI",
+        "order": 42,
+        "lot": 1000
+    },
+    {
+        "name": "\u0420\u043e\u0441\u0441\u0435\u0442\u0438 \u0430\u043f",
+        "code": "RSTIP",
+        "order": 43,
+        "lot": 1000
+    },
+    {
+        "name": "\u042e\u043d\u0438\u043f\u0440\u043e \u0430\u043e",
+        "code": "UPRO",
+        "order": 44,
+        "lot": 1000
+    },
+    {
+        "name": "Petropavl",
+        "code": "POGR",
+        "order": 45,
+        "lot": 100
+    },
+    {
+        "name": "\u041b\u0435\u043d\u0442\u0430 \u0434\u0440",
+        "code": "LNTA",
+        "order": 46,
+        "lot": 1
+    },
+    {
+        "name": "AGRO-\u0433\u0434\u0440",
+        "code": "AGRO",
+        "order": 47,
+        "lot": 1
+    },
+    {
+        "name": "\u0411\u0430\u0448\u043d\u0435\u0444\u0442 \u0430\u043e",
+        "code": "BANE",
+        "order": 48,
+        "lot": 1
+    },
+    {
+        "name": "\u0411\u0430\u0448\u043d\u0435\u0444\u0442 \u0430\u043f",
+        "code": "BANEP",
+        "order": 49,
+        "lot": 1
+    },
+    {
+        "name": "iQIWI",
+        "code": "QIWI",
+        "order": 50,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u0430\u0441\u043f\u0430\u0434\u0441\u043a\u0430\u044f",
+        "code": "RASP",
+        "order": 51,
+        "lot": 10
+    },
+    {
+        "name": "\u042d\u043d\u0435\u043b\u0420\u043e\u0441 \u0430\u043e",
+        "code": "ENRU",
+        "order": 52,
+        "lot": 1000
+    },
+    {
+        "name": "\u0421\u0430\u0440\u0430\u0442\u041d\u041f\u0417-\u043f",
+        "code": "NKHP",
+        "order": 53,
+        "lot": 10
+    },
+    {
+        "name": "\u041b\u0421\u0420 \u0430\u043e",
+        "code": "LSRG",
+        "order": 54,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u0413\u041a-1",
+        "code": "TGKA",
+        "order": 55,
+        "lot": 100000
+    },
+    {
+        "name": "GLTR-\u0433\u0434\u0440",
+        "code": "GLTR",
+        "order": 56,
+        "lot": 10
+    },
+    {
+        "name": "\u0418\u0440\u043a\u042d\u043d\u0435\u0440\u0433\u043e",
+        "code": "RGSS",
+        "order": 57,
+        "lot": 1000
+    },
+    {
+        "name": "\u041d\u041c\u0422\u041f \u0430\u043e",
+        "code": "NMTP",
+        "order": 58,
+        "lot": 100
+    },
+    {
+        "name": "\u041c.\u0432\u0438\u0434\u0435\u043e",
+        "code": "MVID",
+        "order": 59,
+        "lot": 10
+    },
+    {
+        "name": "\u0420\u0443\u0441\u0441\u041d\u0444\u0442 \u0430\u043e",
+        "code": "RNFT",
+        "order": 60,
+        "lot": 1
+    },
+    {
+        "name": "ETLN-\u0433\u0434\u0440",
+        "code": "ETLN",
+        "order": 61,
+        "lot": 1
+    },
+    {
+        "name": "\u041e\u0413\u041a-2 \u0430\u043e",
+        "code": "OGKB",
+        "order": 62,
+        "lot": 1000
+    },
+    {
+        "name": "\u0411\u0421\u041f \u0430\u043e",
+        "code": "BSPB",
+        "order": 63,
+        "lot": 10
+    },
+    {
+        "name": "\u041f\u0418\u041a \u0430\u043e",
+        "code": "PIKK",
+        "order": 64,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0420\u0421\u041a \u0426\u041f",
+        "code": "MRKP",
+        "order": 65,
+        "lot": 10000
+    },
+    {
+        "name": "\u0420\u0421\u0435\u0442\u0438\u041b\u042d-\u043f",
+        "code": "LSNGP",
+        "order": 66,
+        "lot": 10
+    },
+    {
+        "name": "+\u041c\u043e\u0441\u042d\u043d\u0435\u0440\u0433\u043e",
+        "code": "MSNG",
+        "order": 67,
+        "lot": 1000
+    },
+    {
+        "name": "\u042d\u041d+\u0413\u0420\u0423\u041f \u0430\u043e",
+        "code": "ENPG",
+        "order": 68,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u0443\u0441\u043e\u043b\u043e\u0432\u043e",
+        "code": "ROLO",
+        "order": 69,
+        "lot": 1000
+    },
+    {
+        "name": "iHHRU-\u0430\u0434\u0440",
+        "code": "HHRU",
+        "order": 70,
+        "lot": 1
+    },
+    {
+        "name": "\u042e\u0423\u041d\u041a \u0430\u043e",
+        "code": "UNKL",
+        "order": 71,
+        "lot": 1
+    },
+    {
+        "name": "\u041f\u0410\u041e\u0414\u0436\u0438\u0422\u0438\u042d\u043b",
+        "code": "AQUA",
+        "order": 73,
+        "lot": 10
+    },
+    {
+        "name": "\u041e\u0412\u041a \u0430\u043e",
+        "code": "UWGN",
+        "order": 74,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u041c\u041a \u0430\u043e",
+        "code": "TRMK",
+        "order": 75,
+        "lot": 10
+    },
+    {
+        "name": "\u041e\u0440\u0433\u0421\u0438\u043d\u0442 \u0430\u043f",
+        "code": "KZOSP",
+        "order": 76,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0420\u0421\u041a \u0426\u0435\u043d\u0442\u0440",
+        "code": "MRKC",
+        "order": 77,
+        "lot": 1000
+    },
+    {
+        "name": "\u041d\u041a\u041d\u0425 \u0430\u043f",
+        "code": "NKNCP",
+        "order": 78,
+        "lot": 10
+    },
+    {
+        "name": "\u041f\u0435\u0440\u043c\u044c\u042d\u043d\u0421-\u043f",
+        "code": "GEMA",
+        "order": 79,
+        "lot": 1
+    },
+    {
+        "name": "\u0414\u0412\u041c\u041f \u0430\u043e",
+        "code": "FESH",
+        "order": 80,
+        "lot": 100
+    },
+    {
+        "name": "\u0421\u0435\u043b\u0438\u0433\u0434\u0430\u0440",
+        "code": "SELG",
+        "order": 81,
+        "lot": 100
+    },
+    {
+        "name": "\u0410\u0448\u0438\u043d\u0441\u043a\u0438\u0439\u041c\u0417",
+        "code": "KRKNP",
+        "order": 82,
+        "lot": 1
+    },
+    {
+        "name": "\u0412\u0421\u041c\u041f\u041e-\u0410\u0412\u0421\u041c",
+        "code": "VSMO",
+        "order": 83,
+        "lot": 1
+    },
+    {
+        "name": "\u0418\u041d\u0413\u0420\u0410\u0414 \u0430\u043e",
+        "code": "INGR",
+        "order": 84,
+        "lot": 1
+    },
+    {
+        "name": "\u0410\u043a\u0440\u043e\u043d",
+        "code": "AKRN",
+        "order": 85,
+        "lot": 1
+    },
+    {
+        "name": "\u042f\u043a\u0443\u0442\u0441\u043a\u044d\u043d\u0440\u0433",
+        "code": "GAZA",
+        "order": 86,
+        "lot": 10
+    },
+    {
+        "name": "i\u0424\u0430\u0440\u043c\u0441\u0438\u043d\u0442\u0437",
+        "code": "LIFE",
+        "order": 88,
+        "lot": 100
+    },
+    {
+        "name": "\u041a\u0440\u0430\u0441\u041e\u043a\u0442-1\u043f",
+        "code": "VLHZ",
+        "order": 89,
+        "lot": 10
+    },
+    {
+        "name": "\u041e\u0420 \u0430\u043e",
+        "code": "OBUV",
+        "order": 90,
+        "lot": 10
+    },
+    {
+        "name": "\u0427\u0435\u0440\u043a\u0438\u0437\u0413-\u0430\u043e",
+        "code": "GCHE",
+        "order": 91,
+        "lot": 1
+    },
+    {
+        "name": "\u0413\u0418\u0422 \u0430\u043e",
+        "code": "LNZL",
+        "order": 92,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u0435\u043b\u0435\u0433\u0440\u0430\u0444-\u043f",
+        "code": "CNTLP",
+        "order": 93,
+        "lot": 100
+    },
+    {
+        "name": "\u041a\u0443\u0439\u0431\u0430\u0437\u043e\u0442",
+        "code": "RKKE",
+        "order": 94,
+        "lot": 1
+    },
+    {
+        "name": "\u0421\u043b\u0430\u0432-\u042f\u041d\u041e\u0421\u043f",
+        "code": "AMEZ",
+        "order": 95,
+        "lot": 100
+    },
+    {
+        "name": "\u041b\u0435\u043d\u0437\u043e\u043b\u043e\u0442\u043e",
+        "code": "TTLK",
+        "order": 96,
+        "lot": 10000
+    },
+    {
+        "name": "\u0414\u042d\u041a \u0430\u043e",
+        "code": "MGTSP",
+        "order": 97,
+        "lot": 1
+    },
+    {
+        "name": "\u041d\u0435\u0444\u0442\u0435\u043a\u0430\u043c\u0441\u043a",
+        "code": "CHEP",
+        "order": 98,
+        "lot": 10
+    },
+    {
+        "name": "i\u0418\u0421\u041a\u0427 \u0430\u043e",
+        "code": "ISKJ",
+        "order": 99,
+        "lot": 100
+    },
+    {
+        "name": "\u0418\u0420\u041a\u0423\u0422-3",
+        "code": "MRKV",
+        "order": 100,
+        "lot": 10000
+    },
+    {
+        "name": "\u041e\u0440\u0433\u0421\u0438\u043d\u0442 \u0430\u043e",
+        "code": "KZOS",
+        "order": 101,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0443\u043b\u044c\u0442\u0438\u0421\u0438\u0441",
+        "code": "IRKT",
+        "order": 102,
+        "lot": 100
+    },
+    {
+        "name": "\u041d\u041a\u041d\u0425 \u0430\u043e",
+        "code": "NKNC",
+        "order": 103,
+        "lot": 10
+    },
+    {
+        "name": "MDMG-\u0433\u0434\u0440",
+        "code": "SMLT",
+        "order": 104,
+        "lot": 1
+    },
+    {
+        "name": "OKEY-\u0433\u0434\u0440",
+        "code": "OKEY",
+        "order": 105,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u043e\u0441\u0442\u043e\u0442\u0440\u0435\u0441\u0442",
+        "code": "SELGP",
+        "order": 106,
+        "lot": 100
+    },
+    {
+        "name": "\u041c\u0435\u0433\u0438\u043e\u043d-\u0430\u043e",
+        "code": "SLEN",
+        "order": 107,
+        "lot": 100
+    },
+    {
+        "name": "\u0421\u0410\u0424\u041c\u0410\u0420 \u0430\u043e",
+        "code": "MGNZ",
+        "order": 108,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u043e\u0441\u0441\u0435\u0442\u0438 \u0421\u041a",
+        "code": "MRKK",
+        "order": 109,
+        "lot": 10
+    },
+    {
+        "name": "\u0420\u0421\u0435\u0442\u0438\u041c\u0420 \u0430\u043e",
+        "code": "MSRS",
+        "order": 110,
+        "lot": 1000
+    },
+    {
+        "name": "\u0411\u0435\u043b\u0443\u0433\u0430 \u0430\u043e",
+        "code": "KLSB",
+        "order": 111,
+        "lot": 100
+    },
+    {
+        "name": "\u0425\u0438\u043c\u043f\u0440\u043e\u043c \u0430\u043f",
+        "code": "HIMCP",
+        "order": 113,
+        "lot": 100
+    },
+    {
+        "name": "\u041a\u043e\u0440\u0448\u0413\u041e\u041a \u0430\u043e",
+        "code": "KMAZ",
+        "order": 114,
+        "lot": 10
+    },
+    {
+        "name": "\u041b\u0435\u043d\u0437\u043e\u043b. \u0430\u043f",
+        "code": "TGKB",
+        "order": 115,
+        "lot": 1000000
+    },
+    {
+        "name": "\u0410\u043f\u0442\u0435\u043a\u043836\u04386",
+        "code": "APTK",
+        "order": 116,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0430\u0433\u0430\u0434\u042d\u043d \u0430\u043e",
+        "code": "LNZLP",
+        "order": 117,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u0441\u0435\u0442\u0412\u043e\u043b \u0430\u043e",
+        "code": "BELU",
+        "order": 118,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u0435\u043b\u0435\u0433\u0440\u0430\u0444",
+        "code": "CNTL",
+        "order": 119,
+        "lot": 100
+    },
+    {
+        "name": "\u0414\u0430\u0433\u0421\u0431 \u0430\u043e",
+        "code": "KOGK",
+        "order": 120,
+        "lot": 1
+    },
+    {
+        "name": "\u041f\u0435\u0440\u043c\u044c\u042d\u043d\u0421\u0431",
+        "code": "MFGSP",
+        "order": 121,
+        "lot": 10
+    },
+    {
+        "name": "\u041d\u0438\u0436\u043a\u0430\u043c\u0448\u0438\u043d\u0430",
+        "code": "ALNU",
+        "order": 122,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u0413\u041a-14",
+        "code": "NFAZ",
+        "order": 123,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0413\u0422\u0421-4\u0430\u043f",
+        "code": "MAGE",
+        "order": 125,
+        "lot": 1000
+    },
+    {
+        "name": "\u0420\u0421\u0435\u0442\u0438\u041b\u042d",
+        "code": "LSNG",
+        "order": 126,
+        "lot": 100
+    },
+    {
+        "name": "\u0421\u0430\u0445\u044d\u043d\u0435\u0440 \u0430\u043e",
+        "code": "SVAV",
+        "order": 127,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0420\u0421\u041a \u0421\u0417",
+        "code": "MRKZ",
+        "order": 128,
+        "lot": 10000
+    },
+    {
+        "name": "\u041a\u0443\u0437\u0431\u0422\u041a \u0430\u043e",
+        "code": "ABRD",
+        "order": 129,
+        "lot": 10
+    },
+    {
+        "name": "\u041a\u0430\u043c\u0447\u0430\u0442\u042d \u0430\u043f",
+        "code": "YKENP",
+        "order": 131,
+        "lot": 10000
+    },
+    {
+        "name": "\u0420\u0443\u0441\u043f\u043e\u043b\u0438\u043c\u0435\u0442",
+        "code": "MDMG",
+        "order": 132,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u041e\u041b\u041b\u0415\u0420\u0421",
+        "code": "RBCM",
+        "order": 133,
+        "lot": 100
+    },
+    {
+        "name": "\u0417\u0412\u0415\u0417\u0414\u0410 \u0430\u043e",
+        "code": "KRKN",
+        "order": 134,
+        "lot": 1
+    },
+    {
+        "name": "\u0420\u041d-\u0417\u0430\u043f\u0421\u0438\u0431",
+        "code": "GAZAP",
+        "order": 135,
+        "lot": 10
+    },
+    {
+        "name": "\u041f\u0440\u0438\u043c\u043e\u0440\u044c\u0435",
+        "code": "MRKS",
+        "order": 136,
+        "lot": 10000
+    },
+    {
+        "name": "\u0422\u0413\u041a-2",
+        "code": "GTRK",
+        "order": 137,
+        "lot": 10
+    },
+    {
+        "name": "\u041a\u0432\u0430\u0434\u0440\u0430-\u043f",
+        "code": "TORS",
+        "order": 138,
+        "lot": 10000
+    },
+    {
+        "name": "\u0410\u0441\u0442\u0440\u042d\u043d\u0421\u0431",
+        "code": "TGKD",
+        "order": 139,
+        "lot": 100000
+    },
+    {
+        "name": "\u042d\u043d\u0435\u0440\u0433\u0438\u044f\u0420\u041a\u041a",
+        "code": "RUSP",
+        "order": 140,
+        "lot": 1000
+    },
+    {
+        "name": "\u0411\u0435\u0441\u0442\u042d\u0444\u0411 \u0430\u043e",
+        "code": "NNSBP",
+        "order": 141,
+        "lot": 1
+    },
+    {
+        "name": "\u0426\u041c\u0422 \u0430\u043f",
+        "code": "EELT",
+        "order": 142,
+        "lot": 10
+    },
+    {
+        "name": "\u041c\u0435\u0433\u0438\u043e\u043d-\u0430\u043f",
+        "code": "MAGEP",
+        "order": 143,
+        "lot": 1000
+    },
+    {
+        "name": "\u0411\u0443\u0440\u0417\u043e\u043b\u043e\u0442\u043e",
+        "code": "MRSB",
+        "order": 144,
+        "lot": 10000
+    },
+    {
+        "name": "\u0420\u0413\u0421 \u0421\u041a \u0430\u043e",
+        "code": "UNAC",
+        "order": 145,
+        "lot": 1000
+    },
+    {
+        "name": "\u041c\u0420\u0421\u041a \u0423\u0440",
+        "code": "CHMK",
+        "order": 146,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u041c\u0430\u042d\u043b-\u043f",
+        "code": "YRSB",
+        "order": 147,
+        "lot": 10
+    },
+    {
+        "name": "\u0427\u0422\u041f\u0417 \u0430\u043e",
+        "code": "KBTK",
+        "order": 148,
+        "lot": 10
+    },
+    {
+        "name": "\u041e\u041c\u0417-\u0430\u043f",
+        "code": "MRKY",
+        "order": 149,
+        "lot": 10000
+    },
+    {
+        "name": "\u041a\u0443\u0440\u0433\u0430\u043d\u0413\u041a\u0430\u043f",
+        "code": "MSTT",
+        "order": 151,
+        "lot": 10
+    },
+    {
+        "name": "\u0420\u0443\u0441\u0433\u0440\u044d\u0439\u043d",
+        "code": "RUGR",
+        "order": 152,
+        "lot": 10
+    },
+    {
+        "name": "\u041d\u041a\u0425\u041f \u0430\u043e",
+        "code": "IRGZ",
+        "order": 153,
+        "lot": 100
+    },
+    {
+        "name": "\u041c\u0415\u0420\u0418\u0414\u0418\u0410\u041d",
+        "code": "NAUK",
+        "order": 154,
+        "lot": 10
+    },
+    {
+        "name": "\u0410\u0432\u0430\u043d\u0433\u0440\u0434-\u0430\u043e",
+        "code": "MRKU",
+        "order": 155,
+        "lot": 10000
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u043d\u042f\u0440",
+        "code": "IGST",
+        "order": 156,
+        "lot": 1
+    },
+    {
+        "name": "\u0421\u0430\u0440\u0430\u0442\u041d\u041f\u0417",
+        "code": "NSVZ",
+        "order": 157,
+        "lot": 10
+    },
+    {
+        "name": "\u0422\u041a\u0421\u041c \u0430\u043e",
+        "code": "YAKG",
+        "order": 158,
+        "lot": 100
+    },
+    {
+        "name": "\u0420\u044f\u0437\u042d\u043d\u0421\u0431",
+        "code": "YKEN",
+        "order": 159,
+        "lot": 10000
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u043d\u041d\u041d \u0430\u043f",
+        "code": "URKZ",
+        "order": 160,
+        "lot": 1
+    },
+    {
+        "name": "\u041c\u0435\u0434\u0438\u0430\u0445\u043e\u043b\u0434",
+        "code": "DIOD",
+        "order": 162,
+        "lot": 100
+    },
+    {
+        "name": "\u0422\u0430\u043c\u0431\u042d\u043d\u0421\u0431-\u043f",
+        "code": "ZILL",
+        "order": 163,
+        "lot": 1
+    },
+    {
+        "name": "\u042e\u0436\u041a\u0443\u0437\u0431. \u0430\u043e",
+        "code": "TGKN",
+        "order": 165,
+        "lot": 1000000
+    },
+    {
+        "name": "\u0422\u0420\u041a \u0430\u043e",
+        "code": "BRZL",
+        "order": 166,
+        "lot": 1
+    },
+    {
+        "name": "\u0427\u041c\u041a \u0430\u043e",
+        "code": "ACKO",
+        "order": 167,
+        "lot": 100
+    },
+    {
+        "name": "\u041a\u041c\u0417",
+        "code": "STSBP",
+        "order": 168,
+        "lot": 1000
+    },
+    {
+        "name": "\u0412\u0425\u0417-\u0430\u043e",
+        "code": "KAZT",
+        "order": 169,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u0438\u0431\u0413\u043e\u0441\u0442 \u0430\u043e",
+        "code": "KAZTP",
+        "order": 170,
+        "lot": 10
+    },
+    {
+        "name": "\u041a\u0443\u0431\u0430\u043d\u044d\u043d\u0440",
+        "code": "ALBK",
+        "order": 171,
+        "lot": 10
+    },
+    {
+        "name": "\u0411\u0430\u0448\u0418\u043d\u0421\u0432 \u0430\u043f",
+        "code": "VZRZP",
+        "order": 172,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u043b\u0430\u0432\u043d-\u042f\u041d\u041e\u0421",
+        "code": "JNOS",
+        "order": 173,
+        "lot": 100
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u043d\u0420\u0441\u0442",
+        "code": "ELTZ",
+        "order": 175,
+        "lot": 1
+    },
+    {
+        "name": "\u0417\u0430\u0432\u043e\u0434\u0414\u0418\u041e\u0414",
+        "code": "PMSBP",
+        "order": 176,
+        "lot": 10
+    },
+    {
+        "name": "\u0421\u0442\u0430\u0432\u0440\u042d\u043d\u0421\u0431\u043f",
+        "code": "MGTS",
+        "order": 177,
+        "lot": 1
+    },
+    {
+        "name": "\u0410\u0440\u0441\u0430\u0433\u0435\u0440\u0430",
+        "code": "BLNG",
+        "order": 178,
+        "lot": 100
+    },
+    {
+        "name": "\u0414\u043e\u043d\u0441\u043a\u0417\u0420 \u043f",
+        "code": "IGSTP",
+        "order": 179,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u043d\u0420\u0441\u0442-\u043f",
+        "code": "UTAR",
+        "order": 180,
+        "lot": 100
+    },
+    {
+        "name": "\u0420\u0414\u0411\u0430\u043d\u043a \u0430\u043e",
+        "code": "ROSB",
+        "order": 181,
+        "lot": 10
+    },
+    {
+        "name": "\u0422\u0420\u041a \u0430\u043f",
+        "code": "TUZA",
+        "order": 182,
+        "lot": 10
+    },
+    {
+        "name": "\u0412\u0430\u0440\u044c\u0435\u0433\u0430\u043d",
+        "code": "VJGZ",
+        "order": 183,
+        "lot": 1
+    },
+    {
+        "name": "\u0421\u0430\u043c\u0430\u0440\u042d\u043d-\u0430\u043f",
+        "code": "RTSB",
+        "order": 184,
+        "lot": 10000
+    },
+    {
+        "name": "\u041a\u0440\u0430\u0441\u041e\u043a\u0442-\u0430\u043e",
+        "code": "KROT",
+        "order": 185,
+        "lot": 10
+    },
+    {
+        "name": "\u0423\u0440\u0430\u043b\u0421\u0438\u0431 \u0430\u043e",
+        "code": "PRMB",
+        "order": 186,
+        "lot": 1
+    },
+    {
+        "name": "\u041d\u0430\u0443\u043a\u0430\u0421\u0432\u044f\u0437",
+        "code": "RZSB",
+        "order": 187,
+        "lot": 100
+    },
+    {
+        "name": "\u041c\u0413\u0422\u0421-5\u0430\u043e",
+        "code": "RAVN",
+        "order": 188,
+        "lot": 100
+    },
+    {
+        "name": "\u0427\u041a\u041f\u0417 \u0430\u043e",
+        "code": "KMEZ",
+        "order": 189,
+        "lot": 1
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u043d\u0440\u0433 \u0430\u043e",
+        "code": "SFIN",
+        "order": 190,
+        "lot": 10
+    },
+    {
+        "name": "\u0422\u041d\u0421\u044d\u043d\u041d\u041d \u0430\u043e",
+        "code": "YRSBP",
+        "order": 191,
+        "lot": 10
+    },
+    {
+        "name": "\u0420\u0411\u041a \u0430\u043e",
+        "code": "DVEC",
+        "order": 192,
+        "lot": 1000
+    },
+    {
+        "name": "\u0412\u043e\u0437\u0440\u043e\u0436\u0434-\u043f",
+        "code": "LVHK",
+        "order": 193,
+        "lot": 100
+    },
+    {
+        "name": "\u0422\u0430\u0442\u0442\u0435\u043b. \u0430\u043e",
+        "code": "KUZB",
+        "order": 195,
+        "lot": 10000
+    },
+    {
+        "name": "\u0410\u041b\u0420\u041e\u0421\u0410-\u041d\u044e\u0440",
+        "code": "ZVEZ",
+        "order": 196,
+        "lot": 1000
+    },
+    {
+        "name": "\u0412\u044b\u0431\u0421\u0443\u0434\u0417 \u0430\u043e",
+        "code": "KCHE",
+        "order": 197,
+        "lot": 10000
+    },
+    {
+        "name": "\u0417\u0418\u041b \u0430\u043e",
+        "code": "USBN",
+        "order": 199,
+        "lot": 10000
+    }
+]
