@@ -50,7 +50,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-  
     - name: 'Deploy'
       uses: 'deliverybot/helm@v1'
       with:
