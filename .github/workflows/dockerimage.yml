@@ -46,6 +46,7 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
+    needs: docker
     runs-on: 'ubuntu-latest'
     steps:
     - name: Checkout
@@ -58,7 +59,5 @@ jobs:
         helm: helm3
         chart: '.ci/helm/charts'
         token: '${{ github.token }}'
-        values: |
-          name: foobar
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
