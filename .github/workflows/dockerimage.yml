@@ -1,7 +1,10 @@
 name: Docker Build/Publish Image 
 on:  
   push:    
-    branches: [ main ]  
+    branches:
+      - main
+    tags:
+      - '*'
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -49,19 +52,27 @@ jobs:
     needs: docker
     runs-on: 'ubuntu-latest'
     steps:
+    - name: Set staging env
+      if: !startsWith(github.ref, 'ref/tags/')
+      env:
+        KUBE_NAMESPACE: staging
+    - name: Set production env
+      if: startsWith(github.ref, 'ref/tags/')
+      env:
+        KUBE_NAMESPACE: production
     - name: Checkout
       uses: actions/checkout@v2
-    - name: 'Deploy'
+    - name: Deploy
       uses: 'deliverybot/helm@v1'
       with:
         release: 'bot'
-        namespace: 'staging-bot'
+        namespace: '${{ env.KUBE_NAMESPACE }}-bot'
         helm: helm3
         chart: '.ci/helm/chart'
         token: '${{ github.token }}'
         value-files: >- 
           [
-            ".ci/helm/staging.values.yaml"
+            ".ci/helm/${{ env.KUBE_NAMESPACE }}.values.yaml"
           ]
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
