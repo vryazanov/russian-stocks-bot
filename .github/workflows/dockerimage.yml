@@ -61,7 +61,7 @@ jobs:
         token: '${{ github.token }}'
         value-files: >- 
           [
-            ".ci/helm/chart/values.yaml"
+            ".ci/helm/charts/values.yaml"
           ]
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
