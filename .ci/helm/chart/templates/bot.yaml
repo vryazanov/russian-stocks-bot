@@ -7,8 +7,6 @@ spec:
     - name: pv-storage-bot
       persistentVolumeClaim:
         claimName: pvc-bot
-  imagePullSecrets:
-  - name: regcred
   containers:
   - name: bot
     image: ghcr.io/vryazanov/russian-stock-bot:main
@@ -20,5 +18,5 @@ spec:
     imagePullPolicy: Always
     volumeMounts:
       - mountPath: /mnt/storage
-        subPath: bot
+        subPath: bot/{{ .Release.Namespace }}
         name: pv-storage-bot

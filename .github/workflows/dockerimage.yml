@@ -55,13 +55,13 @@ jobs:
       uses: 'deliverybot/helm@v1'
       with:
         release: 'bot'
-        namespace: 'default'
+        namespace: 'staging-bot'
         helm: helm3
-        chart: '.ci/helm/charts'
+        chart: '.ci/helm/chart'
         token: '${{ github.token }}'
         value-files: >- 
           [
-            ".ci/helm/charts/values.yaml"
+            ".ci/helm/staging.values.yaml"
           ]
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
