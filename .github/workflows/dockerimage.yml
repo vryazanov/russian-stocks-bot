@@ -54,12 +54,12 @@ jobs:
     steps:
     - name: Set staging env
       if: startsWith(github.ref, 'ref/heads/')
-      env:
-        KUBE_NAMESPACE: staging
+      run: |
+        echo "KUBE_NAMESPACE=staging" >> $GITHUB_ENV
     - name: Set production env
       if: startsWith(github.ref, 'ref/tags/')
-      env:
-        KUBE_NAMESPACE: production
+      run: |
+        echo "KUBE_NAMESPACE=production" >> $GITHUB_ENV
     - name: Checkout
       uses: actions/checkout@v2
     - name: Deploy
