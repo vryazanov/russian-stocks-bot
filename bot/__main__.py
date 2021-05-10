@@ -9,6 +9,7 @@ import bot.actions
 import bot.actions.admin.ask_for_vote
 import bot.actions.admin.dump
 import bot.actions.admin.purchases
+import bot.actions.admin.health
 import bot.actions.admin.results
 import bot.cron.history
 import bot.logs
@@ -67,6 +68,7 @@ def polling():
             container.get(bot.actions.admin.results.Results),
             container.get(bot.actions.admin.ask_for_vote.AskForVote),
             container.get(bot.actions.admin.dump.Dump),
+            container.get(bot.actions.admin.health.Health),
         ],
     )
 
