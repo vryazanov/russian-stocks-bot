@@ -3,7 +3,7 @@ import abc
 import pathlib
 import typing
 
-from bot.entities import Purchase, User, Voting
+from bot.entities import Purchase, Quotes, User, Voting
 
 
 EntityT = typing.TypeVar('EntityT')
@@ -91,3 +91,10 @@ class PurchaseStorage(BaseFileStorage[Purchase]):
 
     entity_cls = Purchase
     prefix = 'purchase'
+
+
+class QuotesStorage(BaseFileStorage[Quotes]):
+    """Storage for historical quotes."""
+
+    entity_cls = Quotes
+    prefix = 'quotes'

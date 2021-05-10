@@ -70,14 +70,6 @@ class Stock(pydantic.BaseModel):
     lot: int
 
 
-class Quote(pydantic.BaseModel):
-    """Quote."""
-
-    date: datetime.date
-    open_price: decimal.Decimal
-    close_price: decimal.Decimal
-
-
 class PurchaseItem(pydantic.BaseModel):
     """Purchase item."""
 
@@ -101,8 +93,21 @@ class Purchase(pydantic.BaseModel):
         return str(self.id)
 
 
-class HistoricalQuote(pydantic.BaseModel):
+class QuoteItem(pydantic.BaseModel):
+    """Quote item."""
+
+    date: datetime.date
+    open_price: decimal.Decimal
+    close_price: decimal.Decimal
+
+
+class Quotes(pydantic.BaseModel):
     """Keep historical quotes."""
 
     name: StockName
-    quotes: typing.List[Quote]
+    quotes: typing.List[QuoteItem]
+
+    @property
+    def pk(self) -> str:
+        """Use name as a primary key."""
+        return self.name

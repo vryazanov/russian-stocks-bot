@@ -6,7 +6,6 @@ import typing
 
 import injector
 
-from bot.entities import Purchase
 from bot.services.stocks import StockService
 from bot.storage import PurchaseStorage
 
@@ -28,45 +27,53 @@ class Portfolio:
 
     def prices(self) -> typing.Tuple[datetime.date, decimal.Decimal]:
         """Compure price per dates."""
-        purchases = sorted(self._purchases.all(), key=lambda p: p.date)
+        purchases = {
+            purchase.date: purchase
+            for purchase in self._purchases.all()}
 
         if not purchases:
-            return []
+            return
 
-        today = datetime.datetime.today()
-        start_date, end_date = purchases[0].date, today.date()
+        start_date = datetime.date(2021, 2, 1)
+        end_date = datetime.date(2021, 4, 1)
 
-        last_prices, current_stocks = {}, collections.Counter()
-
-        purchase_per_date: typing.Dict[datetime.date, Purchase]
-        purchase_per_date = {purchase.date: purchase for purchase in purchases}
-
-        results: typing.Tuple[datetime.date, decimal.Decimal] = []
-
-        cash_left = 0
+        current_portfolio: collections.Counter[str, int] = {}
 
         for date in daterange(start_date, end_date):
-            purchase = purchase_per_date.get(date)
 
-            total_price = decimal.Decimal('0')
-
-            for code, quantity in current_stocks.items():
-                try:
-                    price = self._service.quote(code, date).open_price
-                except Exception:
-                    price = last_prices.get(code, 0)
-                else:
-                    last_prices[code] = price
-
-                total_price += price * quantity
-
-            if purchase is not None:
-                current_stocks.update({
+            if date in purchases:
+                current_portfolio.update({
                     stock.name: stock.quantity
-                    for stock in purchase.stocks})
-                total_price = purchase.cost
-                cash_left += purchase.cash
+                    for stock in purchases[date].stocks})
+            price = self._price_for_stocks(date, current_portfolio)
 
-            results.append((date, total_price + cash_left))
+            if price is not None:
+                yield date, price
 
-        return results
+    def assets(self, date: datetime.date) -> typing.Dict[str, decimal.Decimal]:
+        """Return stocks and their prices."""
+        stocks = collections.Counter()
+
+        for purchase in self._purchases.all():
+            stocks.update({
+                stock.name: stock.quantity
+                for stock in purchase.stocks})
+
+        return {
+            stock: self._service.quote(stock, date).close_price * quantity
+            for stock, quantity in stocks.items()}
+
+    def _price_for_stocks(
+        self, date: datetime.date, stocks: typing.Dict[str, int],
+    ) -> decimal.Decimal:
+        result = decimal.Decimal('0.0')
+
+        for name, quantity in stocks.items():
+            quote = self._service.quote(name, date)
+
+            if quote is None:
+                return None
+
+            result += quote.close_price * quantity
+
+        return result

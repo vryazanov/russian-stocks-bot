@@ -1,4 +1,6 @@
 """Protofio results."""
+import datetime
+
 import injector
 import matplotlib.pyplot as plt
 import telebot
@@ -11,7 +13,7 @@ from bot.services import Portfolio
 class Results(BaseHandler):
     """Manage portfolio results."""
 
-    step = 500
+    step = 5000
     command = '/results'
 
     @injector.inject
@@ -52,18 +54,18 @@ class Results(BaseHandler):
 
         bot.send_photo(message.chat.id, open('lines.png', 'rb'))
 
-        # ------------
+        labels, fracs = [], []
 
-        labels = ('Кэш', 'Лукойл', 'Сбербанк-п', 'НорНикель')
-        fracs = [15, 30, 45, 10]
+        for stock, price in self._portfolio.assets(
+            datetime.date(2021, 4, 1),
+        ).items():
+            labels.append(stock)
+            fracs.append(price)
 
-        fig, (ax1, ax2) = plt.subplots(1, 2)
+        fig, ax1 = plt.subplots(1)
 
-        ax1.pie(fracs, labels=labels, radius=1, explode=(0.1, 0, 0, 0))
+        ax1.pie(fracs, labels=labels, radius=1)
         ax1.set_title('Народный портфель')
-
-        ax2.pie(fracs, labels=labels, radius=1, explode=(0.1, 0, 0, 0))
-        ax2.set_title('HeySteak портфель')
 
         plt.savefig('pie.png', format='png')
         bot.send_photo(message.chat.id, open('pie.png', 'rb'))

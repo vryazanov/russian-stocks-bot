@@ -10,13 +10,13 @@ import bot.actions.admin.ask_for_vote
 import bot.actions.admin.dump
 import bot.actions.admin.purchases
 import bot.actions.admin.results
+import bot.cron.history
 import bot.logs
 import bot.modules
 import bot.services
 import bot.services.modules
 import bot.settings
 import bot.storage
-import bot.cron.history
 
 
 bot.logs.setup_logging()
@@ -26,12 +26,10 @@ LOGGER = logging.getLogger('bot')
 
 def get_container():
     """Prepare and return base DI container."""
-    codes = [code.strip() for code in open('./ordered.txt')]
-
     container = injector.Injector(modules=[
         bot.modules.MainModule(),
         bot.modules.StorageModule(),
-        bot.services.modules.ServiceModule(codes),
+        bot.services.modules.ServiceModule(),
     ])
 
     return container
@@ -97,7 +95,7 @@ def fetch():
 
     bot.cron.history.fetch(
         container.get(bot.storage.PurchaseStorage),
-        '123'
+        container.get(bot.storage.QuotesStorage),
     )
 
 

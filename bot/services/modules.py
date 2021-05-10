@@ -1,7 +1,9 @@
 """DI configuration for services."""
+import json
 import typing
 
 import injector
+import pydantic
 import telebot
 
 import bot.entities
@@ -11,10 +13,6 @@ import bot.storage
 
 class ServiceModule(injector.Module):
     """DI module for services."""
-
-    def __init__(self, codes: typing.List[str]):
-        """Primary constructor."""
-        self._codes = codes
 
     def configure(self, binder: injector.Binder):
         """Configure services."""
@@ -30,10 +28,10 @@ class ServiceModule(injector.Module):
             ))
         binder.bind(
             bot.services.StockService, lambda: bot.services.StockService(
-                bot.settings.STOCKS_BASE_URL,
-                self._codes,
+                binder.injector.get(bot.storage.QuotesStorage),
             ))
         binder.multibind(
-            typing.List[bot.entities.Stock], lambda: binder.injector.get(
-                bot.services.StockService,
-            ).fetch())
+            typing.List[bot.entities.Stock], lambda: pydantic.parse_obj_as(
+                typing.List[bot.entities.Stock],
+                json.load(open('./stocks.json')),
+            ))

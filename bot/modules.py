@@ -35,3 +35,7 @@ class StorageModule(injector.Module):
             bot.storage.PurchaseStorage, lambda: bot.storage.PurchaseStorage(
                 bot.settings.STORAGE_PATH,
             ))
+        binder.bind(
+            bot.storage.QuotesStorage, lambda: bot.storage.QuotesStorage(
+                bot.settings.STORAGE_PATH,
+            ))
