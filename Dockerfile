@@ -35,4 +35,4 @@ COPY . .
 
 EXPOSE $PORT
 
-CMD ["sh", "-c", "python -m bot"]
+CMD ["sh", "-c", "python -m bot polling"]
