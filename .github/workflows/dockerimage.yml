@@ -53,7 +53,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
     - name: Set staging env
-      if: startsWith(github.ref, 'ref/heads/')
+      # if: startsWith(github.ref, 'ref/heads/')
       run: |
         echo "KUBE_NAMESPACE=staging" >> $GITHUB_ENV
     - name: Set production env
