@@ -9,7 +9,7 @@ spec:
         claimName: pvc-bot
   containers:
   - name: bot
-    image: ghcr.io/vryazanov/russian-stock-bot:main
+    image: ghcr.io/vryazanov/russian-stock-bot:latest
     env:
     {{- range $key, $value := .Values.public_env_variables }}
       - name: {{ $key }}

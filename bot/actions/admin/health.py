@@ -1,4 +1,4 @@
-"""Menu handler."""
+"""Health handler."""
 import telebot
 import telebot.types
 
