@@ -40,7 +40,7 @@ jobs:
         platforms: linux/arm
         context: .
         push: true
-        tags: ghcr.io/vryazanov/russian-stock-bot:latest
+        tags: ghcr.io/vryazanov/russian-stock-bot:${{ github.sha }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new
 
@@ -70,6 +70,8 @@ jobs:
         helm: helm3
         chart: '.ci/helm/chart'
         token: '${{ github.token }}'
+        values: |
+          image_tag: ${{ github.sha }}
         value-files: >- 
           [
             ".ci/helm/${{ env.KUBE_NAMESPACE }}.values.yaml"
