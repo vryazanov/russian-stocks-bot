@@ -52,15 +52,12 @@ jobs:
     runs-on: ubuntu-18.04
     container:
       image: chatwork/argocd-helmfile:2.0.3-0.139.8
-      volumes:
-        - ./:/application
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
     steps:
     - name: Run custom scrupts
-      if: startsWith(github.ref, 'refs/heads/')
       run: |
-        ls -l /application
+        ls -l /
   # deployment:
   #   needs: docker
   #   runs-on: 'ubuntu-latest'
