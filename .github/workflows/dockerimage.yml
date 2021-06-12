@@ -49,6 +49,7 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
+    runs-on: ubuntu-18.04
     container:
       image: chatwork/argocd-helmfile:2.0.3-0.139.8
       volumes:
