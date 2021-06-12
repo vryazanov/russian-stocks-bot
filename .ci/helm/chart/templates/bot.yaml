@@ -15,6 +15,10 @@ spec:
       - name: {{ $key }}
         value: {{ $value | quote }}
     {{- end }}
+    {{- range $key, $value := .Values.secret_env_variables }}
+      - name: {{ $key }}
+        value: {{ $value | quote }}
+    {{- end }}
     imagePullPolicy: Always
     volumeMounts:
       - mountPath: /mnt/storage

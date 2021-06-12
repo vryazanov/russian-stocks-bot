@@ -49,32 +49,44 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
-    needs: docker
-    runs-on: 'ubuntu-latest'
-    steps:
-    - name: Set staging env
-      if: startsWith(github.ref, 'refs/heads/')
-      run: |
-        echo "KUBE_NAMESPACE=staging" >> $GITHUB_ENV
-    - name: Set production env
-      if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        echo "KUBE_NAMESPACE=production" >> $GITHUB_ENV
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Deploy
-      uses: 'deliverybot/helm@v1'
-      with:
-        release: 'bot'
-        namespace: '${{ env.KUBE_NAMESPACE }}-bot'
-        helm: helm3
-        chart: '.ci/helm/chart'
-        token: '${{ github.token }}'
-        values: |
-          image_tag: ${{ github.sha }}
-        value-files: >- 
-          [
-            ".ci/helm/${{ env.KUBE_NAMESPACE }}.values.yaml"
-          ]
+    container:
+      image: chatwork/argocd-helmfile:2.0.3-0.139.8
+      volumes:
+        - ./:/application
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
+    steps:
+    - name: Run custom scrupts
+      if: startsWith(github.ref, 'refs/heads/')
+      run: |
+        ls -l /application
+  # deployment:
+  #   needs: docker
+  #   runs-on: 'ubuntu-latest'
+  #   steps:
+  #   - name: Set staging env
+  #     if: startsWith(github.ref, 'refs/heads/')
+  #     run: |
+  #       echo "KUBE_NAMESPACE=staging" >> $GITHUB_ENV
+  #   - name: Set production env
+  #     if: startsWith(github.ref, 'refs/tags/')
+  #     run: |
+  #       echo "KUBE_NAMESPACE=production" >> $GITHUB_ENV
+  #   - name: Checkout
+  #     uses: actions/checkout@v2
+  #   - name: Deploy
+  #     uses: 'deliverybot/helm@v1'
+  #     with:
+  #       release: 'bot'
+  #       namespace: '${{ env.KUBE_NAMESPACE }}-bot'
+  #       helm: helm3
+  #       chart: '.ci/helm/chart'
+  #       token: '${{ github.token }}'
+  #       values: |
+  #         image_tag: ${{ github.sha }}
+  #       value-files: >- 
+  #         [
+  #           ".ci/helm/${{ env.KUBE_NAMESPACE }}.values.yaml"
+  #         ]
+  #     env:
+  #       KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
