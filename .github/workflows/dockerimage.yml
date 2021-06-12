@@ -50,18 +50,14 @@ jobs:
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
     runs-on: ubuntu-18.04
-    container:
-      image: chatwork/argocd-helmfile:2.0.3-0.139.8
-      env:
-        KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run custom scrupts
+      uses: chatwork/argocd-helmfile:2.0.3-0.139.8
       run: |
-        ls -l /app
+        ls -l /
         which helm
-        which git
   # deployment:
   #   needs: docker
   #   runs-on: 'ubuntu-latest'
