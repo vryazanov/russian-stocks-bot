@@ -57,7 +57,8 @@ jobs:
     steps:
     - name: Run custom scrupts
       run: |
-        ls -l /
+        ls -l /app
+        which helm
   # deployment:
   #   needs: docker
   #   runs-on: 'ubuntu-latest'
