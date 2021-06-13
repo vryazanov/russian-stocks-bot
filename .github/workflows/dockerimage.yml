@@ -59,7 +59,7 @@ jobs:
           -v ${PWD}:/application \
           -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}" \
           chatwork/argocd-helmfile:2.0.3-0.139.8 \
-          ls -l /application/.ci/depoy.sh
+          bash /application/depoy.sh
 
   # deployment:
   #   needs: docker
