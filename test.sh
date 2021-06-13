@@ -1,6 +1,6 @@
 #!/bin/bash
 
-touch ~/.kube/config
+mkdir ~/.kube
 
 "test" >> ~/.kube/config
 
