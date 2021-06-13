@@ -56,13 +56,9 @@ jobs:
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
-        registry: index.docker.io
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
         options: -v ${{ github.workspace }}:/app -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}"
-        shell: bash
-        run: |
-          ls -l /application/
-          bash /application/test.sh
+        run: ls -l /app/
 
   # deployment:
   #   needs: docker
