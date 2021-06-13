@@ -56,8 +56,8 @@ jobs:
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
-        image: chatwork/argocd-helmfile:latest
-        # options: -v ${{ github.workspace }}:/app -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}"
+        image: chatwork/argocd-helmfile:2.0.3-0.139.8
+        options: -v ${{ github.workspace }}:/app
         run: ls -l /app/
 
   # deployment:
