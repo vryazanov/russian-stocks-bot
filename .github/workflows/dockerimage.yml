@@ -53,12 +53,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Prepare k8s creds
+      run: |
+        "${{ secrets.KUBE_CONFIG }}" >> "kubeconfig"
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
-        options: -v ${{ github.workspace }}:/app
-        run: bash /app/test.sh
+        options: -v ${{ github.workspace }}:/app -v ./kubeconfig:/home/argocd/.kube/config
+        run: ls -l .
 
   # deployment:
   #   needs: docker
