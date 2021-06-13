@@ -1,5 +1,7 @@
 #!/bin/bash
 
-$KUBE_CONFIG >> ~/.kube/config
+touch ~/.kube/config
+
+"test" >> ~/.kube/config
 
 cat ~/.kube/config
