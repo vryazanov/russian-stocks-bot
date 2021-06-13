@@ -56,10 +56,11 @@ jobs:
     - name: Run custom scripts
       run: |
         docker run \
+          --privileged \
           -v ${PWD}:/application \
           -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}" \
           chatwork/argocd-helmfile:2.0.3-0.139.8 \
-          bash /application/depoy.sh
+          bash /application/test.sh
 
   # deployment:
   #   needs: docker
