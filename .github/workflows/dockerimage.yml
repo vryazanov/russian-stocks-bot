@@ -6,48 +6,48 @@ on:
     tags:
       - '*'
 jobs:
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+  # docker:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v2
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
+  #   - name: Set up QEMU
+  #     uses: docker/setup-qemu-action@v1
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+  #   - name: Set up Docker Buildx
+  #     uses: docker/setup-buildx-action@v1
 
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+  #   - name: Login to DockerHub
+  #     uses: docker/login-action@v1
+  #     with:
+  #       registry: ghcr.io
+  #       username: ${{ secrets.DOCKER_USERNAME }}
+  #       password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+  #   - name: Cache Docker layers
+  #     uses: actions/cache@v2
+  #     with:
+  #       path: /tmp/.buildx-cache
+  #       key: ${{ runner.os }}-buildx-${{ github.sha }}
+  #       restore-keys: |
+  #         ${{ runner.os }}-buildx-
 
-            - name: Build and push
-    - name: Build an image
-      uses: docker/build-push-action@v2
-      with:
-        platforms: linux/arm
-        context: .
-        push: true
-        tags: ghcr.io/vryazanov/russian-stock-bot:${{ github.sha }}
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new
+  #           - name: Build and push
+  #   - name: Build an image
+  #     uses: docker/build-push-action@v2
+  #     with:
+  #       platforms: linux/arm
+  #       context: .
+  #       push: true
+  #       tags: ghcr.io/vryazanov/russian-stock-bot:${{ github.sha }}
+  #       cache-from: type=local,src=/tmp/.buildx-cache
+  #       cache-to: type=local,dest=/tmp/.buildx-cache-new
 
-    - name: Move cache
-      run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+  #   - name: Move cache
+  #     run: |
+  #       rm -rf /tmp/.buildx-cache
+  #       mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
     runs-on: ubuntu-18.04
     steps:
@@ -55,10 +55,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run custom scrupts
       run: |
-        docker run \
-          -v .:/application
-          -e KUBE_CONFIG=${{ secrets.KUBE_CONFIG }} \
-          chatwork/argocd-helmfile:2.0.3-0.139.8 ls -l /application
+        docker run -v .:/application -e KUBE_CONFIG=${{ secrets.KUBE_CONFIG }} chatwork/argocd-helmfile:2.0.3-0.139.8 ls -l /application
 
   # deployment:
   #   needs: docker
