@@ -53,9 +53,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Run custom scrupts
+    - name: Run custom scripts
       run: |
-        docker run -v .:/application -e KUBE_CONFIG=${{ secrets.KUBE_CONFIG }} chatwork/argocd-helmfile:2.0.3-0.139.8 ls -l /application
+        docker run -v .:/application -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}" chatwork/argocd-helmfile:2.0.3-0.139.8 ls -l /application
 
   # deployment:
   #   needs: docker
