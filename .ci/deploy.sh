@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 $KUBE_CONFIG >> ~/.kube/config
 
