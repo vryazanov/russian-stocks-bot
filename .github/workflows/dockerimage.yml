@@ -54,8 +54,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run custom scrupts
+      uses: chatwork/argocd-helmfile:2.0.3-0.139.8
       run: |
+<<<<<<< HEAD
         docker pull chatwork/argocd-helmfile:2.0.3-0.139.8
+=======
+        ls -l /
+        which helm
+>>>>>>> ee711506a62898e3e36353133c5d07bbe443fc9b
   # deployment:
   #   needs: docker
   #   runs-on: 'ubuntu-latest'
