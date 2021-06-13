@@ -54,8 +54,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Prepare k8s creds
-      run: |
-        "${{ secrets.KUBE_CONFIG }}" >> "kubeconfig"
+      run: "${{ secrets.KUBE_CONFIG }}" >> "./kubeconfig"
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
