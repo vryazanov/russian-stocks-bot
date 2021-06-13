@@ -54,13 +54,13 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run custom scripts
-      run: |
-        docker run \
-          --privileged \
-          -v ${PWD}:/application \
-          -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}" \
-          chatwork/argocd-helmfile:2.0.3-0.139.8 \
+      uses: addnab/docker-run-action@v3
+      with:
+        image: chatwork/argocd-helmfile:2.0.3-0.139.8
+        options: -v ${{ github.workspace }}:/app -e KUBE_CONFIG="${{ secrets.KUBE_CONFIG }}"
+        run: |
           ls -l /application/
+          bash /application/test.sh
 
   # deployment:
   #   needs: docker
