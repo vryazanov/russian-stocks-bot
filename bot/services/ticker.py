@@ -14,4 +14,4 @@ class Ticker:
             return 0
         if self.ticker == "FEE":
             return 0
-        return -1
+        return 0

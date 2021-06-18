@@ -6,6 +6,8 @@ import typing
 
 import injector
 
+from bot.services.deal import Deal
+from bot.services.asset import Asset
 from bot.services.stocks import StockService
 from bot.storage import PurchaseStorage
 
@@ -80,3 +82,49 @@ class Portfolio:
 
 
 class Portfolio:
+
+    def __init__(self):
+        self.assets = []
+        self.deals = []
+
+    def make_deal(self, deal:  Deal):
+        self.deals.append(deal)
+        if deal.ticker == "CASH":
+            for asset in self.assets:
+                if asset.ticker == "CASH":
+                    asset.count += deal.count
+                    return
+        if deal.ticker.startwith("DIVIDEND_"):
+            for asset in self.assets:
+                if asset.ticker == "CASH":
+                    asset.count += deal.count
+                    return
+        if deal.ticker == "FEE":
+            for asset in self.assets:
+                if asset.ticker == "CASH":
+                    asset.count -= deal.count
+                    return
+        for asset in self.assets:
+            if asset.ticker == deal.ticker:
+                asset.count += deal.count
+                price = deal.count*deal.ticker.get_price(deal.date)
+                for a in self.assets:
+                    if a.ticker == "CASH":
+                        a.count -= price
+                fee = price*0.0007
+                d = deal
+                d.ticker = "FEE"
+                d.count = fee
+                self.make_deal(d)
+
+
+    def get_value(self, date):
+        self.assets.clear()
+        for deal in self.deals:
+            if deal.date<date:
+                self.make_deal(deal)
+        value = 0
+        for asset in self.assets:
+            value += asset.ticker.get_price(date)*asset.count
+        return value
+
