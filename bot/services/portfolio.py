@@ -26,7 +26,7 @@ class Portfolio:
         self._purchases = purchases
 
     def prices(self) -> typing.Tuple[datetime.date, decimal.Decimal]:
-        """Compure price per dates."""
+        """Compute price per dates."""
         purchases = {
             purchase.date: purchase
             for purchase in self._purchases.all()}
@@ -77,3 +77,6 @@ class Portfolio:
             result += quote.close_price * quantity
 
         return result
+
+
+class Portfolio:
