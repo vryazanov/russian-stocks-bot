@@ -64,5 +64,5 @@ class Portfolio:
 
 
 p = Portfolio()
-print(p.get_value("2021-01-12"))
-print(p.get_value("2021-01-21"))
+print(p.get_value("2021-04-12"))
+print(p.get_value("2021-04-21"))
