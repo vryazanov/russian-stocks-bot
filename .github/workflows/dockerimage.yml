@@ -68,9 +68,7 @@ jobs:
           -v ${{ github.workspace }}:/app
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
-        run: |
-          ls -l /tmp/
-          cat /tmp/gpg.key
+        run: gpg --list-keys
 
   # deployment:
   #   needs: docker
