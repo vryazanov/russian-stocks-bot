@@ -1,11 +1,4 @@
 """Portfolio related services."""
-import collections
-import datetime
-import decimal
-import typing
-
-import injector
-
 from bot.services.deal import Deal
 from bot.services.ticker import Ticker
 
@@ -43,7 +36,7 @@ class Portfolio:
         self.assets.clear()
         self.assets = {"CASH": 0}
         for deal in self.deals:
-            if deal.date<date:
+            if deal.date < date:
                 self.make_deal(deal)
         value = 0
         for t, c in self.assets:
