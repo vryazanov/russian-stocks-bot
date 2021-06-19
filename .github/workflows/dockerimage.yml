@@ -62,7 +62,7 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
-        options: -v ${{ github.workspace }}:/app -v ${{ github.workspace }}/.kubeconfig:/home/argocd/.kube/
+        options: -v ${{ github.workspace }}:/app -v ${{ github.workspace }}/:/home/argocd/.kube/
         run: ls -l /home/argocd/.kube/
 
   # deployment:
