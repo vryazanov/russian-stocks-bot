@@ -69,9 +69,8 @@ jobs:
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
         run: |
-          gpg --list-keys
+          gpg --import /tmp/gpg.key
           echo "OK"
-          gpg --list-keys
 
   # deployment:
   #   needs: docker
