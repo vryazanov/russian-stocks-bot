@@ -69,7 +69,6 @@ jobs:
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
         run: |
-          gpg --import /tmp/gpg.key
           echo "OK"
 
   # deployment:
