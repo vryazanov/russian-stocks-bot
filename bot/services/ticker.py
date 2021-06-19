@@ -3,7 +3,7 @@ import datetime
 
 class Ticker:
 
-    def __init__(self, ticker, name = ""):
+    def __init__(self, ticker, name=""):
         self.ticker = ticker
         self.name = name
 
