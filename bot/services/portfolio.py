@@ -7,7 +7,6 @@ import typing
 import injector
 
 from bot.services.deal import Deal
-from bot.services.asset import Asset
 from bot.services.stocks import StockService
 from bot.storage import PurchaseStorage
 
@@ -84,39 +83,31 @@ class Portfolio:
 class Portfolio:
 
     def __init__(self):
-        self.assets = []
+        self.assets = {"CASH": 0}
         self.deals = []
 
     def make_deal(self, deal:  Deal):
         self.deals.append(deal)
         if deal.ticker == "CASH":
-            for asset in self.assets:
-                if asset.ticker == "CASH":
-                    asset.count += deal.count
-                    return
+            self.assets["CASH"] += deal.count
+            return
         if deal.ticker.startwith("DIVIDEND_"):
-            for asset in self.assets:
-                if asset.ticker == "CASH":
-                    asset.count += deal.count
-                    return
+            self.assets["CASH"] += deal.count
+            return
         if deal.ticker == "FEE":
-            for asset in self.assets:
-                if asset.ticker == "CASH":
-                    asset.count -= deal.count
-                    return
-        for asset in self.assets:
-            if asset.ticker == deal.ticker:
-                asset.count += deal.count
-                price = deal.count*deal.ticker.get_price(deal.date)
-                for a in self.assets:
-                    if a.ticker == "CASH":
-                        a.count -= price
-                fee = price*0.0007
-                d = deal
-                d.ticker = "FEE"
-                d.count = fee
-                self.make_deal(d)
-
+            self.assets["CASH"] -= deal.count
+            return
+        if deal.ticker in self.assets:
+            self.assets[deal.ticker] += deal.count
+        else:
+            self.assets[deal.ticker] = deal.count
+        price = deal.count*deal.ticker.get_price(deal.date)
+        self.assets["CASH"] -= price
+        fee = price*0.0007
+        d = deal
+        d.ticker = "FEE"
+        d.count = fee
+        self.make_deal(d)
 
     def get_value(self, date):
         self.assets.clear()
