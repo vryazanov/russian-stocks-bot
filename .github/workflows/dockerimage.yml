@@ -59,7 +59,7 @@ jobs:
         echo "$GPG_PRIVATE_KEY" > /tmp/gpg_b64
         base64 -d /tmp/gpg_b64 > /tmp/gpg.key
         cat /tmp/gpg_b64
-        cat gpg.key
+        cat /tmp/gpg.key
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
     - name: Run custom scripts
