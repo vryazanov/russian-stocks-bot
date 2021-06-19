@@ -63,7 +63,7 @@ jobs:
       with:
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
         options: -v ${{ github.workspace }}:/app -v ${{ github.workspace }}/.kubeconfig:/home/argocd/.kube/config
-        run: kubectl get ns
+        run: cat /home/argocd/.kube/config
 
   # deployment:
   #   needs: docker
