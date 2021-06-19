@@ -55,8 +55,9 @@ jobs:
       uses: actions/checkout@v2
     - name: Prepare k8s creds and GPG key
       run: |
-        echo "$KUBECONFIG_FILE" > ${{ github.workspace }}/kubeconfig
-        echo "$GPG_PRIVATE_KEY" > ${{ github.workspace }}/gpg.key
+        echo "$KUBECONFIG_FILE" > /tmp/kubeconfig
+        echo "$GPG_PRIVATE_KEY" > /tmp/gpg_b64
+        base64 -d /tmp/gpg_b64 > /tmp/gpg.key
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
     - name: Run custom scripts
@@ -65,8 +66,11 @@ jobs:
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
         options: |
           -v ${{ github.workspace }}:/app
-          -v ${{ github.workspace }}/kubeconfig:/home/argocd/.kube/config
-        run: base64 -d /app/gpg.key | gpg --import
+          -v /tmp/kubeconfig:/home/argocd/.kube/config
+          -v /tmp/gpg.key:/tmp/gpg.key
+        run: |
+          gpg --import /tmp/gpg.key
+          gpg --list-keys
 
   # deployment:
   #   needs: docker
