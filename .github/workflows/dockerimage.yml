@@ -71,6 +71,7 @@ jobs:
         run: |
           gpg --list-keys
           echo "OK"
+          gpg --list-keys
 
   # deployment:
   #   needs: docker
