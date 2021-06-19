@@ -53,7 +53,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Prepare k8s creds
+    - name: Prepare k8s creds and GPG key
       run: |
         echo "$KUBECONFIG_FILE" > ${{ github.workspace }}/kubeconfig
         echo "$GPG_PRIVATE_KEY" > ${{ github.workspace }}/gpg.key
@@ -66,7 +66,7 @@ jobs:
         options: |
           -v ${{ github.workspace }}:/app
           -v ${{ github.workspace }}/kubeconfig:/home/argocd/.kube/config
-        run: base64 -d ./gpg.key | gpg --import
+        run: ls -l .  # base64 -d ./gpg.key | gpg --import
 
   # deployment:
   #   needs: docker
