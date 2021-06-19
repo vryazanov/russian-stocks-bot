@@ -27,18 +27,53 @@ class DB:
                         self.cursor.execute(sql, [id_ticker, price["Date"], price["Open"], price["Close"]])
                         self.db.commit()
 
+    def get_price(self, ticker, date):
+        sql = """SELECT price.price_close FROM price, ticker 
+        WHERE (price.id_ticker=ticker.id_ticker) AND (ticker.ticker=?) AND (price.date=?);"""
+        self.cursor.execute(sql, [ticker, date])
+        x = self.cursor.fetchall()
+        if len(x) > 0:
+            price_close = x[0]
+            if price_close is not None:
+                return price_close[0]
+            else:
+                return 0
+        else:
+            return 0
 
-        # sql = """SELECT id_ticker FROM ticker WHERE name=?"""
-        # self.cursor.execute(sql, [ticker])
-        # id_ticker = self.cursor.fetchone()
-        # date = "01.01.2021"
-        # price_open = 1.1
-        # price_close = 1.2
-        # price_magic_time = 1.3
-        # sql = """INSERT INTO price VALUES (?,?,?,?,?)"""
-        # self.cursor.execute(sql, [id_ticker, date, price_open, price_close, price_magic_time])
-        # self.db.commit()
+    def add_deal(self, ticker, count, date):
+        sql = """SELECT id_ticker FROM ticker WHERE ticker=?;"""
+        self.cursor.execute(sql, [ticker])
+        id_ticker = self.cursor.fetchone()[0]
+        if id_ticker is not None:
+            sql = """SELECT price_close, price_magic_time FROM price WHERE id_ticker=?;"""
+            self.cursor.execute(sql, [id_ticker])
+            x = self.cursor.fetchall()
+            if len(x) > 0:
+                price_close = x[0][0]
+                price_magic_time = x[0][1]
+            else:
+                price_close = None
+                price_magic_time = None
+            if price_magic_time is not None:
+                sql = """INSERT INTO deal(id_ticker,count,date,price) VALUES (?,?,?,?);"""
+                self.cursor.execute(sql, [id_ticker, count, date, price_magic_time])
+                self.db.commit()
+            else:
+                if price_close is not None:
+                    sql = """INSERT INTO deal(id_ticker,count,date,price) VALUES (?,?,?,?);"""
+                    self.cursor.execute(sql, [id_ticker, count, date, price_close])
+                    self.db.commit()
+                else:
+                    sql = """INSERT INTO deal(id_ticker,count,date,price) VALUES (?,?,?,?);"""
+                    self.cursor.execute(sql, [id_ticker, count, date, -1])
+                    self.db.commit()
 
+    def get_deals(self):
+        sql = """SELECT ticker.ticker, deal.count, deal.date FROM ticker, deal 
+        WHERE ticker.id_ticker=deal.id_ticker;"""
+        self.cursor.execute(sql)
+        return self.cursor.fetchall()
 
 # db = DB()
 # db.import_price("GAZP", "D://Capitalist Club//Эксперимент//Стоимость портфелей//GAZP.txt")
@@ -52,4 +87,3 @@ class DB:
 # db.import_price("SBER", "D://Capitalist Club//Эксперимент//Стоимость портфелей//SBER.txt")
 # db.import_price("SBERP", "D://Capitalist Club//Эксперимент//Стоимость портфелей//SBERP.txt")
 # db.import_price("SNGSP", "D://Capitalist Club//Эксперимент//Стоимость портфелей//SNGSP.txt")
-
