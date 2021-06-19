@@ -65,7 +65,7 @@ jobs:
       with:
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
         options: |
-          -v ${{ github.workspace }}:/app
+          -v ${{ github.workspace }}:/mnt/app/
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
         run: gpg --import /tmp/gpg.key
