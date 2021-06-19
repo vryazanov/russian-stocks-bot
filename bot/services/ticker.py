@@ -7,6 +7,10 @@ class Ticker:
         self.ticker = ticker
         self.name = name
 
+    def __init__(self, ticker):
+        self.ticker = ticker
+        self.name = ""
+
     def get_price(self, date: datetime.date):
         if self.ticker == "CASH":
             return 1
