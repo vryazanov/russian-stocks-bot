@@ -70,7 +70,6 @@ jobs:
           -v /tmp/gpg.key:/tmp/gpg.key
         run: |
           gpg --import /tmp/gpg.key
-          gpg --list-keys
 
   # deployment:
   #   needs: docker
