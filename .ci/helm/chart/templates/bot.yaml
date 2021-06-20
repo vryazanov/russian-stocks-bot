@@ -16,6 +16,10 @@ spec:
       - name: bot
         image: ghcr.io/vryazanov/russian-stocks-bot:{{ .Values.image_tag }}
         env:
+        {{- range $key, $value := .Values.common_env_variables }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+        {{- end }}
         {{- range $key, $value := .Values.public_env_variables }}
           - name: {{ $key }}
             value: {{ $value | quote }}

@@ -1,2 +1,2 @@
-public_env_variables:
+common_env_variables:
   STORAGE_PATH: "/mnt/storage"
