@@ -86,7 +86,7 @@ jobs:
           gpg --import /tmp/gpg.key
           gpg --list-keys
           mkdir ~/app
-          cp /mnt/app/* ~/app
+          cp -r /mnt/app/* ~/app
           ls -l ~/app/.ci
           cd ~/app
           helm secrets upgrade -n staging-bot --set image_tag=121cab20127eef775c1468beedf9faf9ecf4f15b -f .ci/helm/staging.values.yaml -f .ci/helm/secrets.staging.values.yaml bot .ci/helm/chart
