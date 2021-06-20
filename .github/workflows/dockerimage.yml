@@ -6,53 +6,61 @@ on:
     tags:
       - '*'
 jobs:
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+  # docker:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v2
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
+  #   - name: Set up QEMU
+  #     uses: docker/setup-qemu-action@v1
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+  #   - name: Set up Docker Buildx
+  #     uses: docker/setup-buildx-action@v1
 
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+  #   - name: Login to DockerHub
+  #     uses: docker/login-action@v1
+  #     with:
+  #       registry: ghcr.io
+  #       username: ${{ secrets.DOCKER_USERNAME }}
+  #       password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
+  #   - name: Cache Docker layers
+  #     uses: actions/cache@v2
+  #     with:
+  #       path: /tmp/.buildx-cache
+  #       key: ${{ runner.os }}-buildx-${{ github.sha }}
+  #       restore-keys: |
+  #         ${{ runner.os }}-buildx-
 
-            - name: Build and push
-    - name: Build an image
-      uses: docker/build-push-action@v2
-      with:
-        platforms: linux/arm
-        context: .
-        push: true
-        tags: ghcr.io/vryazanov/russian-stocks-bot:${{ github.sha }}
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache-new
+  #           - name: Build and push
+  #   - name: Build an image
+  #     uses: docker/build-push-action@v2
+  #     with:
+  #       platforms: linux/arm
+  #       context: .
+  #       push: true
+  #       tags: ghcr.io/vryazanov/russian-stocks-bot:${{ github.sha }}
+  #       cache-from: type=local,src=/tmp/.buildx-cache
+  #       cache-to: type=local,dest=/tmp/.buildx-cache-new
 
-    - name: Move cache
-      run: |
-        rm -rf /tmp/.buildx-cache
-        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+  #   - name: Move cache
+  #     run: |
+  #       rm -rf /tmp/.buildx-cache
+  #       mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
     runs-on: ubuntu-18.04
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Set staging env
+      if: startsWith(github.ref, 'refs/heads/')
+      run: |
+        echo "KUBE_NAMESPACE=staging" >> $GITHUB_ENV
+    - name: Set production env
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        echo "KUBE_NAMESPACE=production" >> $GITHUB_ENV
     - name: Prepare k8s creds and GPG key
       run: |
         echo "$KUBECONFIG_FILE" > /tmp/kubeconfig
@@ -72,20 +80,14 @@ jobs:
         run: |
           gpg --import /tmp/gpg.key
           gpg --list-keys
+          cd /mnt/app
+          helm secrets upgrade -n staging-bot --set image_tag=121cab20127eef775c1468beedf9faf9ecf4f15b -f .ci/helm/staging.values.yaml -f .ci/helm/secrets.staging.values.yaml bot .ci/helm/chart
 
   # deployment:
   #   needs: docker
   #   runs-on: 'ubuntu-latest'
   #   steps:
-  #   - name: Set staging env
-  #     if: startsWith(github.ref, 'refs/heads/')
-  #     run: |
-  #       echo "KUBE_NAMESPACE=staging" >> $GITHUB_ENV
-  #   - name: Set production env
-  #     if: startsWith(github.ref, 'refs/tags/')
-  #     run: |
-  #       echo "KUBE_NAMESPACE=production" >> $GITHUB_ENV
-  #   - name: Checkout
+
   #     uses: actions/checkout@v2
   #   - name: Deploy
   #     uses: 'deliverybot/helm@v1'
