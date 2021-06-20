@@ -50,6 +50,7 @@ jobs:
   #       mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deployment:
     runs-on: ubuntu-18.04
+    needs: docker
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -82,14 +83,16 @@ jobs:
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
           -v /tmp/sops:/usr/local/bin/sops
+          -e IMAGE_TAG=${{ github.sha }}
+          -e KUBE_NAMESPACE=$KUBE_NAMESPACE
         run: |
           gpg --import /tmp/gpg.key
           gpg --list-keys
           mkdir ~/app
           cp -r /mnt/app/. ~/app
-          ls -la ~/app/
           cd ~/app
-          helm secrets upgrade -n staging-bot --set image_tag=121cab20127eef775c1468beedf9faf9ecf4f15b -f .ci/helm/staging.values.yaml -f .ci/helm/secrets.staging.values.yaml bot .ci/helm/chart
+          env
+          helm secrets upgrade -n staging-bot --set image_tag=$IMAGE_TAG -f .ci/helm/staging.values.yaml -f .ci/helm/secrets.staging.values.yaml bot .ci/helm/chart
 
   # deployment:
   #   needs: docker
