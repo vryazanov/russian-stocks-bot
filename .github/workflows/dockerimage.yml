@@ -92,7 +92,7 @@ jobs:
           cp -r /mnt/app/. ~/app
           cd ~/app
           env
-          helm secrets upgrade -n staging-bot --set image_tag=$IMAGE_TAG -f .ci/helm/staging.values.yaml -f .ci/helm/secrets.staging.values.yaml bot .ci/helm/chart
+          helm secrets upgrade -n $KUBE_NAMESPACE-bot --set image_tag=$IMAGE_TAG -f .ci/helm/$KUBE_NAMESPACE.values.yaml -f .ci/helm/secrets.$KUBE_NAMESPACE.values.yaml bot .ci/helm/chart
 
   # deployment:
   #   needs: docker
