@@ -69,6 +69,9 @@ jobs:
       env:
         KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
         GPG_PRIVATE_KEY: '${{ secrets.GPG_PRIVATE_KEY }}'
+    - name: Download sops
+      run: |
+        curl -o /tmp/sops -L https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
@@ -77,11 +80,8 @@ jobs:
           -v ${{ github.workspace }}:/mnt/app/
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
-          -u root
+          -v /tmp/sops:/usr/local/bin/sops
         run: |
-          curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
-          chmod +x /usr/local/bin/sops
-          su argocd
           gpg --import /tmp/gpg.key
           gpg --list-keys
           cd /mnt/app
