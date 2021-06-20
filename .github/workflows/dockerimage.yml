@@ -73,13 +73,12 @@ jobs:
       run: |
         curl -o /tmp/sops -L https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
         chmod +x /tmp/sops
-        chmod +rwx -R ./
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
         image: chatwork/argocd-helmfile:2.0.3-0.139.8
         options: |
-          -v ${{ github.workspace }}:/mnt/app/
+          -v ${{ github.workspace }}:/mnt/app/:z
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
           -v /tmp/sops:/usr/local/bin/sops
