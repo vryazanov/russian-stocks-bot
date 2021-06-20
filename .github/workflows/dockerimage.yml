@@ -75,6 +75,7 @@ jobs:
         chmod +x /tmp/sops
         cat /etc/passwd
         whoami
+        chown -R 999 ${{ github.workspace }}
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
