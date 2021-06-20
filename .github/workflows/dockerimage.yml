@@ -78,6 +78,7 @@ jobs:
           -v /tmp/kubeconfig:/home/argocd/.kube/config
           -v /tmp/gpg.key:/tmp/gpg.key
         run: |
+          curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
           gpg --import /tmp/gpg.key
           gpg --list-keys
           cd /mnt/app
