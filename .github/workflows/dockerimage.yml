@@ -80,6 +80,8 @@ jobs:
           -u root
         run: |
           curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
+          chmod +x /usr/local/bin/sops
+          su argocd
           gpg --import /tmp/gpg.key
           gpg --list-keys
           cd /mnt/app
