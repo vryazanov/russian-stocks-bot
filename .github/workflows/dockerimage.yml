@@ -72,6 +72,7 @@ jobs:
     - name: Download sops
       run: |
         curl -o /tmp/sops -L https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
+        chmod +x /tmp/sops
     - name: Run custom scripts
       uses: addnab/docker-run-action@v3
       with:
