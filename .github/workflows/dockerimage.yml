@@ -89,8 +89,8 @@ jobs:
           gpg --import /tmp/gpg.key
           mkdir ~/app
           cp -r /mnt/app/. ~/app
-          helm secrets upgrade -n $KUBE_NAMESPACE-bot --set image_tag=$IMAGE_TAG \
+          helm secrets upgrade -n $KUBE_NAMESPACE-bot \
+            --set image_tag=$IMAGE_TAG \
             -f ~/app/.ci/helm/$KUBE_NAMESPACE.values.yaml \
             -f ~/app/.ci/helm/secrets.$KUBE_NAMESPACE.values.yaml \
-            -f ~/app/.ci/helm/chart/values.yaml \
             bot ~/app/.ci/helm/chart
