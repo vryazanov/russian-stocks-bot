@@ -1,4 +1,2 @@
 public_env_variables:
-  BOT_TOKEN: ""
-  BOT_ADMIN_GROUP: ""
   STORAGE_PATH: "/mnt/storage"
