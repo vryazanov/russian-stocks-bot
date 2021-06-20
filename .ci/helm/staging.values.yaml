@@ -1,1 +1,2 @@
 public_env_variables:
+  STORAGE_PATH: "/mnt/storage"
