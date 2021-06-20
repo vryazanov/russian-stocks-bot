@@ -84,7 +84,7 @@ jobs:
           -v /tmp/gpg.key:/tmp/gpg.key
           -v /tmp/sops:/usr/local/bin/sops
           -e IMAGE_TAG=${{ github.sha }}
-          -e KUBE_NAMESPACE=$KUBE_NAMESPACE
+          -e KUBE_NAMESPACE=${{ env.KUBE_NAMESPACE }}
         run: |
           gpg --import /tmp/gpg.key
           gpg --list-keys
