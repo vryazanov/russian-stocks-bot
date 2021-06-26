@@ -81,6 +81,7 @@ def polling():
         my_bot.polling()
     except Exception as e:
         LOGGER.exception(str(e))
+        raise
 
 
 @cli.group()
