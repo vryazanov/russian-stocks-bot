@@ -1,79 +1,68 @@
 """Portfolio related services."""
-import collections
-import datetime
-import decimal
-import typing
-
-import injector
-
-from bot.services.stocks import StockService
-from bot.storage import PurchaseStorage
-
-
-def daterange(start_date, end_date) -> typing.Iterable[datetime.date]:
-    """Iterate between two dates."""
-    for n in range((end_date - start_date).days):
-        yield start_date + datetime.timedelta(n)
+import db
+import deal
+import ticker
 
 
 class Portfolio:
-    """Manage assets portfolio here."""
 
-    @injector.inject
-    def __init__(self, service: StockService, purchases: PurchaseStorage):
-        """Primary constructor."""
-        self._service = service
-        self._purchases = purchases
+    def __init__(self):
+        self.assets = {"CASH": 0}
+        self.deals = []
+        self.db = db.DB()
 
-    def prices(self) -> typing.Tuple[datetime.date, decimal.Decimal]:
-        """Compure price per dates."""
-        purchases = {
-            purchase.date: purchase
-            for purchase in self._purchases.all()}
-
-        if not purchases:
+    def make_deal(self, d):
+        self.deals.append(d)
+        if d.ticker == "CASH":
             return
+        if d.ticker.startswith("DIVIDEND_"):
+            return
+        t = ticker.Ticker(d.ticker)
+        price = d.count * t.get_price(d.date)
+        fee = 0.0007 * price
+        if d.ticker is not "FEE":
+            x = deal.Deal("FEE", fee, d.date)
+            self.make_deal(x)
 
-        start_date = datetime.date(2021, 2, 1)
-        end_date = datetime.date(2021, 4, 1)
+    def calc_deal(self, d):
+        if d.ticker == "CASH":
+            self.assets["CASH"] += d.count
+            return
+        if d.ticker.startswith("DIVIDEND_"):
+            self.assets["CASH"] += d.count
+            return
+        if d.ticker == "FEE":
+            self.assets["CASH"] -= d.count
+            return
+        if d.ticker in self.assets:
+            self.assets[d.ticker] += d.count
+        else:
+            self.assets[d.ticker] = d.count
+        t = ticker.Ticker(d.ticker)
+        price = d.count*t.get_price(d.date)
+        self.assets["CASH"] -= price
+        return
 
-        current_portfolio: collections.Counter[str, int] = {}
+    def get_deals(self):
+        self.deals.clear()
+        for d in self.db.get_deals():
+            self.make_deal(deal.Deal(d[0], d[1], d[2]))
+        return
 
-        for date in daterange(start_date, end_date):
+    def get_value(self, date):
+        self.get_deals()
+        self.assets.clear()
+        self.assets = {"CASH": 0}
+        for d in self.deals:
+            if d.date < date:
+                self.calc_deal(d)
+        value = 0
+        for tick in self.assets:
+            t = ticker.Ticker(tick)
+            value += t.get_price(date)*self.assets[tick]
+        return value
 
-            if date in purchases:
-                current_portfolio.update({
-                    stock.name: stock.quantity
-                    for stock in purchases[date].stocks})
-            price = self._price_for_stocks(date, current_portfolio)
 
-            if price is not None:
-                yield date, price
-
-    def assets(self, date: datetime.date) -> typing.Dict[str, decimal.Decimal]:
-        """Return stocks and their prices."""
-        stocks = collections.Counter()
-
-        for purchase in self._purchases.all():
-            stocks.update({
-                stock.name: stock.quantity
-                for stock in purchase.stocks})
-
-        return {
-            stock: self._service.quote(stock, date).close_price * quantity
-            for stock, quantity in stocks.items()}
-
-    def _price_for_stocks(
-        self, date: datetime.date, stocks: typing.Dict[str, int],
-    ) -> decimal.Decimal:
-        result = decimal.Decimal('0.0')
-
-        for name, quantity in stocks.items():
-            quote = self._service.quote(name, date)
-
-            if quote is None:
-                return None
-
-            result += quote.close_price * quantity
-
-        return result
+p = Portfolio()
+print(p.get_value("2021-04-12"))
+print(p.get_value("2021-04-21"))
